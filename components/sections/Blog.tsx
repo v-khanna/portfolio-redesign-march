@@ -11,6 +11,7 @@ export function Blog({ posts }: BlogProps) {
   return (
     <section id="blog" className="mb-24 scroll-mt-20 lg:scroll-mt-0">
       <SectionHeading>Writing</SectionHeading>
+      <p className="text-slate text-sm mb-6">Minds to machines, and everything in between.</p>
 
       {posts.length === 0 ? (
         <div className="text-slate text-sm">
