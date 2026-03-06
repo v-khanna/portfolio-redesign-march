@@ -11,21 +11,27 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <motion.div
-      className="group relative flex flex-col p-5 rounded-lg border border-navy-lighter cursor-default"
+    <motion.article
+      className="group relative p-5 rounded-lg cursor-default"
       whileHover={{
-        y: -4,
-        borderColor: '#233554',
         backgroundColor: '#112240',
-        boxShadow: '0 20px 40px rgba(0,0,0,0.35)',
       }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      {/* Header */}
+      <motion.div
+        className="absolute left-0 top-0 bottom-0 w-0.5 rounded-l-lg origin-top"
+        initial={{ scaleY: 0, backgroundColor: '#64ffda' }}
+        whileHover={{ scaleY: 1 }}
+        transition={{ duration: 0.2 }}
+      />
+
       <div className="flex items-start justify-between gap-2 mb-3">
-        <h3 className="text-lightest-slate font-semibold text-sm leading-snug group-hover:text-teal transition-colors duration-200">
-          {project.title}
-        </h3>
+        <div>
+          <h3 className="text-lightest-slate font-semibold text-sm leading-snug group-hover:text-teal transition-colors duration-200">
+            {project.title}
+          </h3>
+          <p className="mt-1 text-xs text-slate leading-relaxed">{project.description}</p>
+        </div>
         <div className="flex items-center gap-2 flex-shrink-0">
           {project.githubUrl && (
             <a
@@ -52,18 +58,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      {/* Overview (layman's terms) */}
-      <p className="text-sm text-light-slate leading-relaxed mb-2 italic">{project.overview}</p>
+      <p className="mb-3 text-sm italic text-light-slate leading-relaxed">
+        {project.overview}
+      </p>
 
-      {/* Technical description */}
-      <p className="text-xs text-slate leading-relaxed mb-4 flex-grow">{project.description}</p>
+      <ul className="mb-4 space-y-2">
+        {project.achievements.map((achievement) => (
+          <li key={achievement} className="flex gap-2 text-sm text-slate leading-relaxed">
+            <span className="mt-1.5 flex-shrink-0 text-[8px] text-teal">▸</span>
+            <span>{achievement}</span>
+          </li>
+        ))}
+      </ul>
 
-      {/* Tags */}
       <div className="flex flex-wrap gap-1.5">
         {project.tags.map((tag) => (
-          <SkillBadge key={tag} skill={tag} />
+          <SkillBadge key={tag} skill={tag} className="bg-white/5 text-light-slate border-white/10 hover:bg-white/10 hover:border-white/15 hover:text-lightest-slate" />
         ))}
       </div>
-    </motion.div>
+    </motion.article>
   )
 }

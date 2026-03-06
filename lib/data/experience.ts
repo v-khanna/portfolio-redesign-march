@@ -7,10 +7,9 @@ export const experience: ExperienceEntry[] = [
     period: 'June 2025 – October 2025',
     location: 'Sunnyvale, California',
     companyUrl: 'https://www.blendid.com',
-    logoUrl: '/logos/blendid.png',
     type: 'internship',
     overview:
-      'Built automation tools for a robotics food company — handling refunds, inventory alerts, and machine health monitoring across 15 kiosk locations.',
+      'Built automation tools for a robotics food company, handling refunds, inventory alerts, and machine health monitoring across 15 kiosk locations.',
     achievements: [
       'Owned end-to-end product launch of automated refund flows, slashing ticket resolution latency 72% for 15 sites',
       'Orchestrated B2B inventory alerting platform, driving cross-functional ops alignment for 99% recipe availability',
@@ -22,8 +21,7 @@ export const experience: ExperienceEntry[] = [
     role: 'Forward Deployed Engineer',
     period: 'June 2024 – December 2024',
     location: 'Plantation, Florida',
-    companyUrl: 'https://www.everise.com',
-    logoUrl: '/logos/everise.png',
+    companyUrl: 'https://weareeverise.com/',
     type: 'internship',
     overview:
       'Deployed AI voice agents in call centers across 4 countries, building self-service tools that dramatically reduced hold times and boosted automated resolutions.',
@@ -39,7 +37,6 @@ export const experience: ExperienceEntry[] = [
     period: 'June 2023 – December 2023',
     location: 'Gurugram, Haryana',
     companyUrl: 'https://www.ckbirla.com',
-    logoUrl: '/logos/ckbirla.png',
     type: 'internship',
     overview:
       'Built an internal AI chatbot that could answer employee questions by reading company documents, and sped up the backend APIs powering it.',
@@ -52,10 +49,9 @@ export const experience: ExperienceEntry[] = [
   {
     company: 'Machine Learning Student Network',
     role: 'Tech Director, Founding Member',
-    period: 'March 2024 – Present',
+    period: 'March 2024 – September 2025',
     location: 'Davis, California',
-    companyUrl: 'https://mlsn.ucdavis.edu',
-    logoUrl: '/logos/mlsn.png',
+    companyUrl: 'https://www.linkedin.com/company/mlsn-davis/posts/?feedView=all',
     type: 'leadership',
     overview:
       'Founded and grew a 50-member ML club at UC Davis, mentoring student teams through building and deploying real machine learning projects.',

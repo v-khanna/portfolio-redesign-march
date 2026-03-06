@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import type { ExperienceEntry } from '@/lib/types'
@@ -11,10 +10,14 @@ interface ExperienceCardProps {
 
 export function ExperienceCard({ entry }: ExperienceCardProps) {
   return (
-    <motion.div
-      className="group relative grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-2 sm:gap-6 p-5 rounded-lg cursor-default"
+    <motion.a
+      href={entry.companyUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-2 sm:gap-6 rounded-lg p-5 cursor-pointer focus-visible:outline-none"
       whileHover={{ backgroundColor: '#112240' }}
       transition={{ duration: 0.2 }}
+      aria-label={`${entry.company} company site`}
     >
       {/* Teal left border on hover */}
       <motion.div
@@ -24,54 +27,34 @@ export function ExperienceCard({ entry }: ExperienceCardProps) {
         transition={{ duration: 0.2 }}
       />
 
-      {/* Period + logo */}
-      <div className="flex flex-col items-start gap-3 mt-1">
+      {/* Period */}
+      <div className="mt-1">
         <div className="text-xs font-mono text-slate uppercase tracking-wider whitespace-nowrap">
           {entry.period.split(' – ')[0]}
           <br className="hidden sm:block" />
           <span className="sm:hidden"> – </span>
           {entry.period.split(' – ')[1]}
         </div>
-        {entry.logoUrl && (
-          <Image
-            src={entry.logoUrl}
-            alt={`${entry.company} logo`}
-            width={32}
-            height={32}
-            className="hidden sm:block rounded opacity-60 group-hover:opacity-100 transition-opacity duration-200"
-          />
-        )}
       </div>
 
       {/* Content */}
       <div>
         <h3 className="text-lightest-slate font-semibold text-sm leading-tight mb-0.5">
-          {entry.companyUrl ? (
-            <a
-              href={entry.companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/link inline-flex items-center gap-1.5 hover:text-teal transition-colors duration-200 focus-visible:text-teal focus-visible:outline-none"
-            >
-              <span>{entry.role}</span>
-              <span className="text-slate">·</span>
-              <span>{entry.company}</span>
-              <ExternalLink
-                size={12}
-                className="opacity-0 group-hover/link:opacity-100 transition-opacity duration-200 flex-shrink-0"
-              />
-            </a>
-          ) : (
-            <span>
-              {entry.role} · {entry.company}
-            </span>
-          )}
+          <span className="inline-flex items-center gap-1.5 group-hover:text-teal transition-colors duration-200">
+            <span>{entry.role}</span>
+            <span className="text-slate">·</span>
+            <span>{entry.company}</span>
+            <ExternalLink
+              size={12}
+              className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0"
+            />
+          </span>
         </h3>
         <div className="flex items-center gap-2 mb-2">
           <span className="text-xs text-slate">{entry.location}</span>
           {entry.type === 'internship' && (
-            <span className="text-[10px] font-mono text-slate/70 border border-navy-lighter rounded px-1.5 py-0.5 leading-none">
-              internship
+            <span className="rounded-full bg-white/5 px-2 py-0.5 text-[10px] font-medium tracking-wide text-light-slate/75">
+              Internship
             </span>
           )}
         </div>
@@ -86,6 +69,6 @@ export function ExperienceCard({ entry }: ExperienceCardProps) {
           ))}
         </ul>
       </div>
-    </motion.div>
+    </motion.a>
   )
 }

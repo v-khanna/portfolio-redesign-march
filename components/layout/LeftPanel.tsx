@@ -127,8 +127,7 @@ export function LeftPanel() {
           <SocialLink
             href="/resume.pdf"
             icon={FileText}
-            label="Download resume"
-            download
+            label="Open resume"
           />
         </motion.div>
       </aside>

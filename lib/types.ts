@@ -5,8 +5,7 @@ export interface ExperienceEntry {
   location: string
   overview: string
   achievements: string[]
-  companyUrl?: string
-  logoUrl?: string
+  companyUrl: string
   type: 'internship' | 'leadership'
 }
 

@@ -4,9 +4,10 @@ export const projects: ProjectEntry[] = [
   // --- Resume projects (in resume order) ---
   {
     title: 'Enterprise KG-RAG w/ Multi-Agent Layer (Graphiti)',
-    description: 'A knowledge graph + AI system that reads financial PDFs, extracts entities and relationships, and answers questions with strict evidence-only outputs.',
+    description:
+      'Enterprise knowledge graph RAG system for financial PDFs with structured entity extraction, graph-backed retrieval, and evidence-bound multi-agent answering.',
     overview:
-      'Think of it as a smart filing cabinet for financial documents — it reads PDFs, understands the relationships between companies and dates, and answers questions only using what it actually found.',
+      'Think of it as a smart filing cabinet for financial documents that maps relationships between companies and dates, then answers questions only with evidence it actually found.',
     tags: ['Neo4j', 'CrewAI', 'Docker', 'React'],
     achievements: [
       'Led enterprise KG-RAG product strategy, utilizing Neo4j to extract complex financial entities from PDF data',
@@ -18,10 +19,11 @@ export const projects: ProjectEntry[] = [
     externalUrl: null,
   },
   {
-    title: 'Bullseye — AI Financial News Analysis Platform',
-    description: 'A real-time market analysis tool with a Chrome extension that uses GPT-4 to summarize and contextualize financial news across 200+ portals.',
+    title: 'Bullseye: AI Financial News Analysis Platform',
+    description:
+      'Real-time financial news analysis platform combining GPT-4 article understanding, Chrome extension workflows, and live market context across 200+ sources.',
     overview:
-      'A Chrome extension that reads the financial news article you\'re on, runs it through GPT-4, and gives you a plain-English summary with market charts — all in one click.',
+      'A Chrome extension that reads the financial article you are on, runs it through GPT-4, and gives you a plain-English summary with market charts in one click.',
     tags: ['OpenAI API', 'MySQL', 'Alpha Vantage', 'Node.js', 'React', 'TypeScript'],
     achievements: [
       'Synthesized real-time market analysis product pipelines, integrating GPT-4 APIs to deliver user news insights',
@@ -32,10 +34,11 @@ export const projects: ProjectEntry[] = [
     externalUrl: null,
   },
   {
-    title: 'Echo Journal — AI Voice Journaling iOS App',
-    description: 'An iOS app that lets you journal by talking — it records your voice, transcribes it in real-time via OpenAI, and synthesizes daily reflections.',
+    title: 'Echo Journal: AI Voice Journaling iOS App',
+    description:
+      'AI voice journaling app with realtime transcription, async backend processing, and structured daily reflection generation.',
     overview:
-      'You talk to your phone like a voice memo, and it turns your rambling into a structured journal entry with AI-generated reflections and insights.',
+      'You talk to your phone like a voice memo, and it turns that stream of thought into a structured journal entry with AI-generated reflections and insights.',
     tags: ['SwiftUI', 'FastAPI', 'WebSocket', 'PostgreSQL', 'OpenAI API'],
     achievements: [
       'Handled iOS scaling for 100+ concurrent OpenAI Realtime API connections with sub-second audio latency',
@@ -48,69 +51,70 @@ export const projects: ProjectEntry[] = [
   // --- Notable older projects ---
   {
     title: 'Relatient Appointment Pathway',
-    description: 'AI voice agent for healthcare appointment scheduling with prompt injection defense and zero-shot learning techniques.',
+    description:
+      'Healthcare voice agent for appointment scheduling with prompt-injection defenses, entity capture, and reliable multi-turn conversation handling.',
     overview:
-      'An AI phone agent that schedules doctor\'s appointments, designed to resist manipulation and handle real conversations with 95% accuracy on names and dates.',
+      'An AI phone agent that schedules doctor appointments, designed to resist manipulation and reliably handle real conversations.',
     tags: ['Bland AI', 'Prompt Injection', 'Zero-Shot Learning', 'LLM Security'],
     achievements: [
-      'Devised phonetic algorithms capturing emails, DOB, etc., during natural speech pauses to 95% accuracy',
-      'Reduced hallucinations by 85% via context-aware prompting, eliminating 100% phantom transfers in test calls',
-      'Secured voice agents by solving 50+ LLM challenges (Bland AI, Lakera\'s Gandalf) to prevent real-world attacks',
+      'Built prompt-guarded voice flows for appointment booking, including zero-shot handling for names, dates of birth, and scheduling intents.',
+      'Combined phonetic parsing with context-aware prompting to reduce hallucinated transfers and improve captured caller details.',
     ],
     githubUrl: null,
     externalUrl: null,
   },
   {
-    title: 'Deep Q-Learning · Atari Pong',
-    description: 'Reinforcement learning agent using CNN architecture and epsilon-greedy exploration to master Atari Pong.',
+    title: 'Deep Q-Learning: Atari Pong',
+    description:
+      'Deep reinforcement learning agent for Atari Pong using convolutional Q-networks, replay buffers, and target-network training.',
     overview:
-      'Taught an AI to play Pong from scratch by watching pixels — it learned to beat the game 70% of the time through trial and error.',
+      'I trained an AI to play Pong from raw pixels until it could consistently learn winning behavior through trial and error.',
     tags: ['PyTorch', 'OpenAI Gym', 'CUDA', 'OpenCV'],
     achievements: [
-      'Built Deep Q-Network with CNN architecture and epsilon-greedy exploration, achieving 70% win rate on Pong',
-      'Incorporated experience replay with CUDA optimization and target network, reducing training variance by 45%',
-      'Refined frame stacking and reward clipping using OpenCV and PyTorch, improving model stability by 30%',
+      'Implemented a convolutional DQN in PyTorch with epsilon-greedy exploration, target networks, and experience replay for stable Atari training.',
+      'Optimized preprocessing and training with frame stacking, reward clipping, and CUDA-backed batches to improve sample efficiency.',
     ],
     githubUrl: 'https://github.com/v-khanna/Deep_Q_Network',
     externalUrl: null,
   },
   {
-    title: 'ChatCKB · CK Birla AI Chatbot',
-    description: 'Internal AI chatbot for CK Birla that reads company documents and answers questions using GPT-4 and LangChain.',
+    title: 'ChatCKB: CK Birla AI Chatbot',
+    description:
+      'Internal document Q&A assistant built with GPT-4, LangChain, and Flask for answering employee questions from company PDFs.',
     overview:
-      'A chatbot employees could ask questions to — it would read through the company\'s PDFs and give a direct answer instead of making you search for it.',
+      'Employees could ask a question in plain English and get an answer from company documents instead of digging through PDFs themselves.',
     tags: ['OpenAI API', 'LangChain', 'Python', 'GPT-4', 'Flask'],
     achievements: [
-      'Built intelligent chatbot that comprehends and processes company documents using OpenAI API and LangChain',
-      'Implemented 24/7 availability with NLP for complex queries and document insights',
-      'Designed seamless integration for websites, apps, and customer service interfaces',
+      'Built a retrieval-backed internal chatbot with LangChain, Flask, and GPT-4 to answer employee questions against company documents.',
+      'Created ingestion and query pipelines that extracted PDF content, chunked knowledge, and served responses through a lightweight internal interface.',
     ],
     githubUrl: 'https://github.com/v-khanna/chatCKB',
     externalUrl: null,
   },
   {
     title: 'Real-Time ASL Recognition',
-    description: 'Computer vision system translating ASL hand signs to text using edge AI and MediaPipe hand tracking.',
+    description:
+      'Real-time computer vision pipeline for translating ASL gestures to text with MediaPipe tracking and MobileNetV2 inference.',
     overview:
-      'Point your webcam at someone signing ASL and it translates the hand signs to text in real-time at 15+ frames per second.',
+      'Point a webcam at someone signing and the system translates the hand signs to text in real time.',
     tags: ['TensorFlow', 'MediaPipe', 'OpenCV', 'MobileNetV2'],
     achievements: [
-      'Achieved 92% accuracy on 5-class ASL alphabet using transfer learning with MobileNetV2 and real-time hand tracking',
-      'Optimized for edge deployment with 15+ FPS through model quantization and efficient preprocessing',
-      'Built robust hand detection pipeline using MediaPipe landmarks with dynamic ROI cropping',
+      'Trained a transfer-learning pipeline on MobileNetV2 with MediaPipe landmarks to classify ASL gestures from live webcam input.',
+      'Optimized inference with quantization and efficient preprocessing to keep recognition responsive on edge hardware.',
     ],
     githubUrl: null,
     externalUrl: null,
   },
   {
     title: 'Connect4 Championship',
-    description: 'AI-powered Connect-4 game using Minimax and Alpha-Beta Pruning, competing against 250+ opponents.',
+    description:
+      'Game-playing AI using Minimax, alpha-beta pruning, and heuristic board evaluation for tournament-scale competition.',
     overview:
-      'Built an AI that plays Connect 4 — it thinks several moves ahead and competed against 250+ other AIs in a class tournament.',
+      'I built a Connect 4 AI that looks several moves ahead and competed against more than 250 other agents in a class tournament.',
     tags: ['Python', 'PyGame', 'Minimax', 'Alpha-Beta Pruning'],
     achievements: [
-      'Devised a Connect-4 AI utilizing Minimax & Alpha-Beta Pruning; competed against 250+ opponents',
-      'Boosted decision-making speed by 50%, allowing real-time gameplay adjustments within time constraints',
+      'Implemented Minimax with alpha-beta pruning and board evaluation heuristics to search several moves ahead under time limits.',
+      'Tuned move ordering and scoring logic to cut decision latency and improve play against a large field of competing agents.',
     ],
     githubUrl: 'https://github.com/v-khanna/Connect4_Championship',
     externalUrl: null,

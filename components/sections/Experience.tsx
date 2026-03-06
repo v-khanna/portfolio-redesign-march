@@ -20,7 +20,8 @@ export function Experience() {
         <AnimatedChild>
           <a
             href="/resume.pdf"
-            download
+            target="_blank"
+            rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 mt-4 text-sm font-semibold text-lightest-slate hover:text-teal transition-colors duration-200 focus-visible:text-teal focus-visible:outline-none"
           >
             View Full Résumé

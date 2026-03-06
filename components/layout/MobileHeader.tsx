@@ -93,7 +93,13 @@ export function MobileHeader() {
               <a href="https://virkhanna.substack.com" target="_blank" rel="noopener noreferrer" aria-label="Substack" className="hover:text-teal transition-colors duration-200">
                 <SubstackIcon />
               </a>
-              <a href="/resume.pdf" download aria-label="Resume" className="hover:text-teal transition-colors duration-200">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Resume"
+                className="hover:text-teal transition-colors duration-200"
+              >
                 <FileText size={20} strokeWidth={1.5} />
               </a>
             </motion.div>
