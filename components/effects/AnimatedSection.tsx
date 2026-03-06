@@ -15,7 +15,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.14,
       delayChildren: 0.05,
     },
   },
@@ -27,10 +27,11 @@ const reducedContainerVariants = {
 }
 
 export const childVariants = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 28, scale: 0.98 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: {
       duration: 0.55,
       ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],

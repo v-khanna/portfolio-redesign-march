@@ -70,9 +70,7 @@ export function LeftPanel() {
               <ScrambleText text="Vir Khanna" delay={300} />
             </h1>
             <p className="text-sm text-slate leading-relaxed max-w-xs">
-              I build AI-powered systems and scalable web applications.
-              B.S. Computational Cognitive Science (Data & AI) at{' '}
-              <span className="text-light-slate font-medium">UC Davis</span>.
+              I build systems that think, automate, and scale
             </p>
           </motion.div>
 

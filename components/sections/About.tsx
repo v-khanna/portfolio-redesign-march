@@ -5,8 +5,8 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 
 export function About() {
   return (
-    <section id="about" className="mb-24 scroll-mt-20 lg:scroll-mt-0">
-      <SectionHeading>About</SectionHeading>
+    <section id="about" className="mb-24 scroll-mt-2 lg:scroll-mt-0">
+      <SectionHeading sectionId="about">About</SectionHeading>
       <AnimatedSection>
         <AnimatedChild>
           <p className="text-slate leading-relaxed mb-4">

@@ -12,9 +12,10 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <motion.article
-      className="group relative p-5 rounded-lg cursor-default"
+      className="group relative p-5 rounded-lg cursor-default border border-transparent hover:border-teal/[0.08] transition-[border-color] duration-200"
       whileHover={{
         backgroundColor: '#112240',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.25)',
       }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
@@ -65,7 +66,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <ul className="mb-4 space-y-2">
         {project.achievements.map((achievement) => (
           <li key={achievement} className="flex gap-2 text-sm text-slate leading-relaxed">
-            <span className="mt-1.5 flex-shrink-0 text-[8px] text-teal">▸</span>
+            <span className="mt-1.5 flex-shrink-0 text-[8px] text-teal/40">▸</span>
             <span>{achievement}</span>
           </li>
         ))}

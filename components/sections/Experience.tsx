@@ -8,8 +8,8 @@ import { ArrowRight } from 'lucide-react'
 
 export function Experience() {
   return (
-    <section id="experience" className="mb-24 scroll-mt-20 lg:scroll-mt-0">
-      <SectionHeading>Experience</SectionHeading>
+    <section id="experience" className="mb-24 scroll-mt-2 lg:scroll-mt-0">
+      <SectionHeading sectionId="experience">Experience</SectionHeading>
       <AnimatedSection className="flex flex-col gap-2">
         {experience.map((entry) => (
           <AnimatedChild key={entry.company}>

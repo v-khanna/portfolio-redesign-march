@@ -43,7 +43,7 @@ export function MobileHero() {
         <ScrambleText text="Vir Khanna" delay={250} />
       </h1>
       <p className="text-sm text-slate leading-relaxed max-w-md mb-5">
-        I build AI-powered systems and scalable web applications.
+        I build systems that think, automate, and scale
       </p>
 
       <div className="flex items-center gap-1">

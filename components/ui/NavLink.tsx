@@ -18,14 +18,21 @@ export function NavLink({ href, label, isActive, onClick }: NavLinkProps) {
       className="group flex items-center gap-4 py-2 focus-visible:outline-none"
     >
       {/* Animated indicator line */}
-      <motion.span
-        className="block h-px origin-left"
-        animate={{
-          width: isActive ? 48 : 16,
-          backgroundColor: isActive ? '#64ffda' : '#8892b0',
-        }}
-        transition={{ duration: 0.25, ease: 'easeOut' }}
-      />
+      {isActive ? (
+        <motion.span
+          layoutId="nav-indicator"
+          className="block h-px w-12 bg-teal"
+          transition={{ type: 'spring', stiffness: 450, damping: 38 }}
+        />
+      ) : (
+        <motion.span
+          className="block h-px bg-slate/50 group-hover:bg-slate"
+          animate={{ width: 16 }}
+          whileHover={{ width: 32 }}
+          transition={{ duration: 0.2 }}
+        />
+      )}
+
       {/* Label */}
       <span
         className={cn(

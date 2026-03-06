@@ -14,8 +14,8 @@ export function ExperienceCard({ entry }: ExperienceCardProps) {
       href={entry.companyUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-2 sm:gap-6 rounded-lg p-5 cursor-pointer focus-visible:outline-none"
-      whileHover={{ backgroundColor: '#112240' }}
+      className="group relative grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-2 sm:gap-6 rounded-lg p-5 cursor-pointer focus-visible:outline-none border border-transparent hover:border-teal/[0.08] transition-[border-color] duration-200"
+      whileHover={{ backgroundColor: '#112240', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}
       transition={{ duration: 0.2 }}
       aria-label={`${entry.company} company site`}
     >
@@ -63,7 +63,7 @@ export function ExperienceCard({ entry }: ExperienceCardProps) {
         <ul className="space-y-2">
           {entry.achievements.map((achievement, i) => (
             <li key={i} className="flex gap-2 text-sm text-slate leading-relaxed">
-              <span className="text-teal mt-1.5 flex-shrink-0 text-[8px]">▸</span>
+              <span className="text-teal/40 mt-1.5 flex-shrink-0 text-[8px]">▸</span>
               <span>{achievement}</span>
             </li>
           ))}
