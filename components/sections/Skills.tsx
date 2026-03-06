@@ -13,7 +13,7 @@ export function Skills() {
         {Object.entries(skills).map(([category, items]) => (
           <AnimatedChild key={category}>
             <div>
-              <h3 className="text-xs font-mono text-teal uppercase tracking-widest mb-3">
+              <h3 className="text-xs font-mono text-white uppercase tracking-widest mb-3">
                 {category}
               </h3>
               <div className="flex flex-wrap gap-2">
