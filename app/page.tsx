@@ -28,25 +28,7 @@ export default async function Page() {
           {/* Footer */}
           <footer className="pt-8 pb-4 border-t border-navy-lighter">
             <p className="text-xs text-slate">
-              Designed & built by{' '}
-              <a
-                href="https://github.com/v-khanna"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lightest-slate hover:text-teal transition-colors duration-200"
-              >
-                Vir Khanna
-              </a>
-              . Inspired by{' '}
-              <a
-                href="https://brittanychiang.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-lightest-slate hover:text-teal transition-colors duration-200"
-              >
-                Brittany Chiang
-              </a>
-              .
+              Built by Vir Khanna. Inspired by Brittany Chiang.
             </p>
           </footer>
         </main>
