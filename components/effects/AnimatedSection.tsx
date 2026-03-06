@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { cn } from '@/lib/utils'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
@@ -54,8 +55,8 @@ export function AnimatedSection({ children, className, delay = 0 }: AnimatedSect
   return (
     <motion.div
       ref={ref}
-      className={className}
-      style={{ isolation: 'isolate', ...(delay ? { transitionDelay: `${delay}ms` } : {}) }}
+      className={cn('relative z-0', className)}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
       variants={variants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
