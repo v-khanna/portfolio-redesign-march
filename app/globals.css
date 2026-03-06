@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #0a192f;
+  --color-navy-light: #112240;
+  --color-navy-lighter: #233554;
+  --color-slate: #8892b0;
+  --color-light-slate: #a8b2d8;
+  --color-lightest-slate: #ccd6f6;
+  --color-white: #e6f1ff;
+  --color-teal: #64ffda;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-navy);
+  color: var(--color-lightest-slate);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for right panel */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-lighter);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(100, 255, 218, 0.2);
+  color: var(--color-teal);
+}
+
+/* Focus ring */
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Fira Code for inline code */
+code {
+  font-family: var(--font-fira-code), 'Menlo', monospace;
+  font-size: 0.85em;
+  color: var(--color-teal);
+}
