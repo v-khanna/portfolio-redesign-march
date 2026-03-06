@@ -31,17 +31,22 @@ export function SectionHeading({ children, className }: SectionHeadingProps) {
 
   return (
     <>
-      {/* 1px sentinel: when it leaves the viewport the heading is stuck */}
       <div ref={sentinelRef} className="h-px -mt-px" aria-hidden="true" />
       <motion.h2
         ref={ref}
         className={cn(
           'flex items-center gap-3 text-sm font-bold uppercase tracking-widest',
           'text-lightest-slate mb-8',
-          'sticky top-0 z-30 py-4 -mx-6 px-6 lg:static lg:mx-0 lg:px-0 lg:py-0',
+          // Mobile: sticky heading that covers safe-area (notch/Dynamic Island)
+          // -top-[env()] + pt-[env()] extends bg above into the safe area
+          'sticky z-30 -mx-6 px-6 pb-4 lg:static lg:mx-0 lg:px-0 lg:py-0 lg:z-auto',
           'bg-navy lg:bg-transparent',
           className
         )}
+        style={{
+          top: 'calc(-1 * env(safe-area-inset-top, 0px))',
+          paddingTop: 'calc(1rem + env(safe-area-inset-top, 0px))',
+        }}
         initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }}
         animate={
           prefersReducedMotion
