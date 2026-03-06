@@ -55,10 +55,10 @@ export function AnimatedSection({ children, className, delay = 0 }: AnimatedSect
     <motion.div
       ref={ref}
       className={className}
+      style={{ isolation: 'isolate', ...(delay ? { transitionDelay: `${delay}ms` } : {}) }}
       variants={variants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
     </motion.div>

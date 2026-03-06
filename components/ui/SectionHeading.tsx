@@ -38,7 +38,7 @@ export function SectionHeading({ children, className }: SectionHeadingProps) {
         className={cn(
           'flex items-center gap-3 text-sm font-bold uppercase tracking-widest',
           'text-lightest-slate mb-8',
-          'sticky top-0 z-10 py-4 -mx-6 px-6 lg:static lg:mx-0 lg:px-0 lg:py-0',
+          'sticky top-0 z-30 py-4 -mx-6 px-6 lg:static lg:mx-0 lg:px-0 lg:py-0',
           'bg-navy lg:bg-transparent',
           className
         )}
