@@ -36,7 +36,7 @@ export const experience: ExperienceEntry[] = [
     role: 'Product Engineer',
     period: 'June 2023 – December 2023',
     location: 'Gurugram, Haryana',
-    companyUrl: 'https://www.ckbirla.com',
+    companyUrl: 'https://birlafertility.com/',
     type: 'internship',
     overview:
       'Built an internal AI chatbot that could answer employee questions by reading company documents, and sped up the backend APIs powering it.',
