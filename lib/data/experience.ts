@@ -26,7 +26,7 @@ export const experience: ExperienceEntry[] = [
     overview:
       'Deployed AI voice agents in call centers across 4 countries, building self-service tools that dramatically reduced hold times and boosted automated resolutions.',
     achievements: [
-      'Spearheaded global voice AI product rollout, driving cross-center adoption to boost automated resolutions 70%',
+      'Spearheaded global voice AI product rollout, driving cross-centre adoption to boost automated resolutions 70%',
       'Championed enterprise UX overhaul by launching a self-serve IVR product, reducing hold times 70% in 4 countries',
       'Directed global infrastructure scaling for B2B enterprise clients, guaranteeing 99.9% SLA uptime for AI products',
     ],
@@ -43,7 +43,7 @@ export const experience: ExperienceEntry[] = [
     achievements: [
       'Integrated LLM chatbots via Langchain and Flask, optimizing internal Slack-based question answering workflows',
       'Engineered PDF data extraction pipelines for iKites.ai, enabling company-wide automated QA system capabilities',
-      'Minimized employee query API latency by 25% through the strategic optimization of Flask and Node.js backends',
+      'Minimized employee query API latency by 25% through the strategic optimisation of Flask and Node.js backends',
     ],
   },
   {
@@ -58,7 +58,7 @@ export const experience: ExperienceEntry[] = [
     achievements: [
       'Mentored 50 members and 6 junior developers as Tech Director, scaling the Machine Learning Student Network',
       'Guided 5-person student cohorts from product ideation to full deployment of ML systems via end-to-end CI/CD',
-      'Achieved 90%+ test accuracy for real-time ASL recognizers via MediaPipe hand tracking and MobileNetV2 models',
+      'Achieved 90%+ test accuracy for real-time ASL recognisers via MediaPipe hand tracking and MobileNetV2 models',
     ],
   },
 ]

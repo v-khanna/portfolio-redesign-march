@@ -10,10 +10,10 @@ export const projects: ProjectEntry[] = [
       'Think of it as a smart filing cabinet for financial documents that maps relationships between companies and dates, then answers questions only with evidence it actually found.',
     tags: ['Neo4j', 'CrewAI', 'Docker', 'React'],
     achievements: [
-      'Led enterprise KG-RAG product strategy, utilizing Neo4j to extract complex financial entities from PDF data',
+      'Led enterprise KG-RAG product strategy, utilising Neo4j to extract complex financial entities from PDF data',
       'Enforced AI reliability by designing 5-agent CrewAI pipelines with strict evidence-only JSON output protocols',
       'Deployed Graphiti on Neo4j Aura, leveraging product telemetry and vector indexes for real-time visual graphs',
-      'Formalized financial domain modeling, building typed Neo4j edges to capture precise dates in enterprise filings',
+      'Formalised financial domain modelling, building typed Neo4j edges to capture precise dates in enterprise filings',
     ],
     githubUrl: null,
     externalUrl: null,
@@ -26,7 +26,7 @@ export const projects: ProjectEntry[] = [
       'A Chrome extension that reads the financial article you are on, runs it through GPT-4, and gives you a plain-English summary with market charts in one click.',
     tags: ['OpenAI API', 'MySQL', 'Alpha Vantage', 'Node.js', 'React', 'TypeScript'],
     achievements: [
-      'Synthesized real-time market analysis product pipelines, integrating GPT-4 APIs to deliver user news insights',
+      'Synthesised real-time market analysis product pipelines, integrating GPT-4 APIs to deliver user news insights',
       'Launched Chrome extension product features, triggering seamless LLM analysis across 200+ financial portals',
       'Constructed interactive frontend UX with React and TS, embedding SVG charts for market data comparisons',
     ],
@@ -52,13 +52,13 @@ export const projects: ProjectEntry[] = [
   {
     title: 'Relatient Appointment Pathway',
     description:
-      'Healthcare voice agent for appointment scheduling with prompt-injection defenses, entity capture, and reliable multi-turn conversation handling.',
+      'Healthcare voice agent for appointment scheduling with prompt-injection defences, entity capture, and reliable multi-turn conversation handling.',
     overview:
       'An AI phone agent that schedules doctor appointments, designed to resist manipulation and reliably handle real conversations.',
     tags: ['Bland AI', 'Prompt Injection', 'Zero-Shot Learning', 'LLM Security'],
     achievements: [
-      'Built prompt-guarded voice flows for appointment booking, including zero-shot handling for names, dates of birth, and scheduling intents.',
-      'Combined phonetic parsing with context-aware prompting to reduce hallucinated transfers and improve captured caller details.',
+      'Built prompt-guarded voice flows for appointment booking, including zero-shot handling for names, dates of birth, and scheduling intents',
+      'Combined phonetic parsing with context-aware prompting to reduce hallucinated transfers and improve captured caller details',
     ],
     githubUrl: null,
     externalUrl: null,
@@ -68,11 +68,11 @@ export const projects: ProjectEntry[] = [
     description:
       'Deep reinforcement learning agent for Atari Pong using convolutional Q-networks, replay buffers, and target-network training.',
     overview:
-      'I trained an AI to play Pong from raw pixels until it could consistently learn winning behavior through trial and error.',
+      'I trained an AI to play Pong from raw pixels until it could consistently learn winning behaviour through trial and error.',
     tags: ['PyTorch', 'OpenAI Gym', 'CUDA', 'OpenCV'],
     achievements: [
-      'Implemented a convolutional DQN in PyTorch with epsilon-greedy exploration, target networks, and experience replay for stable Atari training.',
-      'Optimized preprocessing and training with frame stacking, reward clipping, and CUDA-backed batches to improve sample efficiency.',
+      'Implemented a convolutional DQN in PyTorch with epsilon-greedy exploration, target networks, and experience replay for stable Atari training',
+      'Optimised preprocessing and training with frame stacking, reward clipping, and CUDA-backed batches to improve sample efficiency',
     ],
     githubUrl: 'https://github.com/v-khanna/Deep_Q_Network',
     externalUrl: null,
@@ -85,8 +85,8 @@ export const projects: ProjectEntry[] = [
       'Employees could ask a question in plain English and get an answer from company documents instead of digging through PDFs themselves.',
     tags: ['OpenAI API', 'LangChain', 'Python', 'GPT-4', 'Flask'],
     achievements: [
-      'Built a retrieval-backed internal chatbot with LangChain, Flask, and GPT-4 to answer employee questions against company documents.',
-      'Created ingestion and query pipelines that extracted PDF content, chunked knowledge, and served responses through a lightweight internal interface.',
+      'Built a retrieval-backed internal chatbot with LangChain, Flask, and GPT-4 to answer employee questions against company documents',
+      'Created ingestion and query pipelines that extracted PDF content, chunked knowledge, and served responses through a lightweight internal interface',
     ],
     githubUrl: 'https://github.com/v-khanna/chatCKB',
     externalUrl: null,
@@ -99,8 +99,8 @@ export const projects: ProjectEntry[] = [
       'Point a webcam at someone signing and the system translates the hand signs to text in real time.',
     tags: ['TensorFlow', 'MediaPipe', 'OpenCV', 'MobileNetV2'],
     achievements: [
-      'Trained a transfer-learning pipeline on MobileNetV2 with MediaPipe landmarks to classify ASL gestures from live webcam input.',
-      'Optimized inference with quantization and efficient preprocessing to keep recognition responsive on edge hardware.',
+      'Trained a transfer-learning pipeline on MobileNetV2 with MediaPipe landmarks to classify ASL gestures from live webcam input',
+      'Optimised inference with quantisation and efficient preprocessing to keep recognition responsive on edge hardware',
     ],
     githubUrl: null,
     externalUrl: null,
@@ -113,8 +113,8 @@ export const projects: ProjectEntry[] = [
       'I built a Connect 4 AI that looks several moves ahead and competed against more than 250 other agents in a class tournament.',
     tags: ['Python', 'PyGame', 'Minimax', 'Alpha-Beta Pruning'],
     achievements: [
-      'Implemented Minimax with alpha-beta pruning and board evaluation heuristics to search several moves ahead under time limits.',
-      'Tuned move ordering and scoring logic to cut decision latency and improve play against a large field of competing agents.',
+      'Implemented Minimax with alpha-beta pruning and board evaluation heuristics to search several moves ahead under time limits',
+      'Tuned move ordering and scoring logic to cut decision latency and improve play against a large field of competing agents',
     ],
     githubUrl: 'https://github.com/v-khanna/Connect4_Championship',
     externalUrl: null,
