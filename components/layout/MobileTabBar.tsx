@@ -20,7 +20,7 @@ export function MobileTabBar() {
   return (
     <nav
       aria-label="Primary"
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-sm border-t border-navy-lighter"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-[100] bg-navy/95 backdrop-blur-sm border-t border-navy-lighter"
       style={{
         paddingBottom: 'env(safe-area-inset-bottom)',
       }}
