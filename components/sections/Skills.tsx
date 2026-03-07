@@ -7,7 +7,7 @@ import { skills } from '@/lib/data/skills'
 
 export function Skills() {
   return (
-    <section id="skills" className="relative isolate mb-24 scroll-mt-2 lg:scroll-mt-0">
+    <section id="skills" className="mb-24 scroll-mt-2 lg:scroll-mt-0">
       <SectionHeading sectionId="skills">Skills</SectionHeading>
       <AnimatedSection className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {Object.entries(skills).map(([category, items]) => (

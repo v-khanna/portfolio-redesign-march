@@ -9,7 +9,7 @@ interface BlogProps {
 
 export function Blog({ posts }: BlogProps) {
   return (
-    <section id="blog" className="relative isolate mb-24 scroll-mt-2 lg:scroll-mt-0">
+    <section id="blog" className="mb-24 scroll-mt-2 lg:scroll-mt-0">
       <SectionHeading sectionId="blog">Writing</SectionHeading>
       <p className="text-slate text-sm mb-6">Minds to machines, and everything in between</p>
 

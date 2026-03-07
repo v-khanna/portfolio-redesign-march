@@ -7,7 +7,7 @@ import { projects } from '@/lib/data/projects'
 
 export function Projects() {
   return (
-    <section id="projects" className="relative isolate mb-24 scroll-mt-2 lg:scroll-mt-0">
+    <section id="projects" className="mb-24 scroll-mt-2 lg:scroll-mt-0">
       <SectionHeading sectionId="projects">Projects</SectionHeading>
       <AnimatedSection className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {projects.map((project) => (

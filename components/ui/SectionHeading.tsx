@@ -31,11 +31,10 @@ export function SectionHeading({ children, className }: SectionHeadingProps) {
         className={cn(
           'flex items-center gap-3 text-sm font-bold uppercase tracking-widest',
           'text-lightest-slate mb-8',
-          'sticky top-0 z-30 py-5 -mx-6 px-6 w-screen lg:static lg:mx-0 lg:px-0 lg:py-0 lg:z-auto lg:w-auto',
+          'sticky top-0 z-20 py-5 -mx-6 px-6 w-screen lg:static lg:mx-0 lg:px-0 lg:py-0 lg:z-auto lg:w-auto',
           'bg-navy/75 backdrop-blur lg:bg-transparent lg:backdrop-blur-none',
           className
         )}
-        style={{ WebkitTransform: 'translate3d(0,0,0)' }}
       >
         <span
           className={cn(

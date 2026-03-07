@@ -78,10 +78,18 @@ flowchart TB
 
 ---
 
-## Attempted Fixes
+## Reference: Brittany Chiang's Working Implementation
 
-The following have been tried; the issue persists on Safari:
+Brittany's site (brittanychiang.com) has the same sticky heading pattern and works on Safari. Key difference: her content elements have **no Framer Motion transforms** -- plain divs. Her sticky heading uses `sticky top-0 z-20 bg-slate-900/75 backdrop-blur`, nearly identical to ours. The problem is purely the inline `transform` left by Framer Motion on animated children.
 
-1. **`isolate` on sections** — Added `relative isolate` to each section (`About`, `Experience`, `Projects`, `Skills`, `Blog`) to create a common stacking context for heading + content.
-2. **Z-index bumps** — Raised sticky heading from `z-20` to `z-30`, and MobileTabBar from `z-50` to `z-[100]`.
-3. **Content wrapper `z-0`** — Added `z-0` to the main content wrapper so it forms an explicit stacking context, with the tab bar as a sibling at `z-[100]`.
+## Attempted Fixes (did NOT work)
+
+1. **`isolate` on sections** — Reverted. Did not help; Brittany doesn't use it.
+2. **Z-index bumps** — Reverted. z-index can't win across stacking contexts.
+3. **Content wrapper `z-0`** — Reverted. Created unnecessary stacking context.
+4. **`transitionEnd: { transform: 'none' }`** — Reverted. Unreliable with staggered variant children.
+5. **`WebkitTransform: translate3d(0,0,0)`** — Reverted. Compositing hint didn't help on Safari.
+
+## Applied Fix
+
+Strip Framer Motion's inline `transform` from the DOM after animation completes, using `onAnimationComplete` + `ref.current.style.removeProperty('transform')` on both `AnimatedSection` and `AnimatedChild`. This is the recommended workaround from [Framer Motion issue #823](https://github.com/framer/motion/issues/823). After removal, no competing stacking contexts exist and the sticky heading's z-index wins normally.

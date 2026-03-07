@@ -18,7 +18,7 @@ export default async function Page() {
       <AmbientBackground />
       <MobileHero />
       <MobileTabBar />
-      <div className="relative z-0 min-h-screen">
+      <div className="relative min-h-screen">
         <LeftPanel />
 
         {/* Right scrollable content */}

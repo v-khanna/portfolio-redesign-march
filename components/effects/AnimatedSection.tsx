@@ -37,9 +37,6 @@ export const childVariants = {
       duration: 0.55,
       ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     },
-    transitionEnd: {
-      transform: 'none',
-    },
   },
 }
 
@@ -48,8 +45,14 @@ export const reducedChildVariants = {
   visible: { opacity: 1, y: 0 },
 }
 
+function stripTransform(ref: React.RefObject<HTMLDivElement | null>) {
+  requestAnimationFrame(() => {
+    ref.current?.style.removeProperty('transform')
+  })
+}
+
 export function AnimatedSection({ children, className, delay = 0 }: AnimatedSectionProps) {
-  const ref = useRef(null)
+  const ref = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -58,11 +61,12 @@ export function AnimatedSection({ children, className, delay = 0 }: AnimatedSect
   return (
     <motion.div
       ref={ref}
-      className={cn('relative z-0', className)}
+      className={cn('relative', className)}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
       variants={variants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
+      onAnimationComplete={() => stripTransform(ref)}
     >
       {children}
     </motion.div>
@@ -70,11 +74,17 @@ export function AnimatedSection({ children, className, delay = 0 }: AnimatedSect
 }
 
 export function AnimatedChild({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
   const variants = prefersReducedMotion ? reducedChildVariants : childVariants
 
   return (
-    <motion.div variants={variants} className={className}>
+    <motion.div
+      ref={ref}
+      variants={variants}
+      className={className}
+      onAnimationComplete={() => stripTransform(ref)}
+    >
       {children}
     </motion.div>
   )
