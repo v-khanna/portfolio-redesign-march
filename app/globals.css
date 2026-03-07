@@ -88,3 +88,15 @@ code {
 .pb-mobile-tabbar {
   padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
 }
+
+/*
+ * Kill Framer Motion inline transforms on mobile to prevent stacking context
+ * issues with sticky headings and fixed tab bar. Only targets elements with
+ * inline style attributes (set by JS), not CSS class-based transforms.
+ * See needtofix/STACKING_CONTEXT_ISSUE.md
+ */
+@media (max-width: 1023px) {
+  main [style*="transform"] {
+    transform: none !important;
+  }
+}
