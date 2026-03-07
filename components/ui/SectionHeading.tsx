@@ -35,6 +35,7 @@ export function SectionHeading({ children, className }: SectionHeadingProps) {
           'bg-navy/75 backdrop-blur lg:bg-transparent lg:backdrop-blur-none',
           className
         )}
+        style={{ WebkitTransform: 'translate3d(0,0,0)' }}
       >
         <span
           className={cn(

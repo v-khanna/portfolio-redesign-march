@@ -37,6 +37,9 @@ export const childVariants = {
       duration: 0.55,
       ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
     },
+    transitionEnd: {
+      transform: 'none',
+    },
   },
 }
 
