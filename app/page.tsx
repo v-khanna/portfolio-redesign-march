@@ -2,7 +2,6 @@ import { getBlogPosts } from '@/lib/rss'
 import { ActiveSectionProvider } from '@/components/providers/ActiveSectionProvider'
 import { LeftPanel } from '@/components/layout/LeftPanel'
 import { MobileHero } from '@/components/layout/MobileHero'
-import { MobileTabBar } from '@/components/layout/MobileTabBar'
 import { AmbientBackground } from '@/components/effects/AmbientBackground'
 import { About } from '@/components/sections/About'
 import { Experience } from '@/components/sections/Experience'
@@ -17,12 +16,11 @@ export default async function Page() {
     <ActiveSectionProvider>
       <AmbientBackground />
       <MobileHero />
-      <MobileTabBar />
       <div className="relative min-h-screen">
         <LeftPanel />
 
         {/* Right scrollable content */}
-        <main className="lg:ml-[45%] lg:max-w-[55%] px-6 py-16 pb-mobile-tabbar lg:px-16 lg:py-24 xl:px-24">
+        <main className="lg:ml-[45%] lg:max-w-[55%] px-6 py-16 lg:px-16 lg:py-24 xl:px-24">
           <About />
           <Experience />
           <Projects />

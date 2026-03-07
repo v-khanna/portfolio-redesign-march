@@ -84,7 +84,3 @@ code {
   padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* Space for the fixed mobile tab bar */
-.pb-mobile-tabbar {
-  padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
-}
