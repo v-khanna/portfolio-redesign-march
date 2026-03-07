@@ -1,9 +1,8 @@
 'use client'
 
-import { useRef, useState, useEffect } from 'react'
+import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
-import { cn } from '@/lib/utils'
 
 interface AnimatedSectionProps {
   children: React.ReactNode
@@ -40,36 +39,13 @@ export const childVariants = {
   },
 }
 
-const mobileChildVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.45,
-      ease: 'easeOut',
-    },
-  },
-}
-
 export const reducedChildVariants = {
   hidden: { opacity: 1, y: 0 },
   visible: { opacity: 1, y: 0 },
 }
 
-function useIsMobile(): boolean {
-  const [isMobile, setIsMobile] = useState(true)
-  useEffect(() => {
-    const mql = window.matchMedia('(min-width: 1024px)')
-    setIsMobile(!mql.matches)
-    const handler = () => setIsMobile(!mql.matches)
-    mql.addEventListener('change', handler)
-    return () => mql.removeEventListener('change', handler)
-  }, [])
-  return isMobile
-}
-
 export function AnimatedSection({ children, className, delay = 0 }: AnimatedSectionProps) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef(null)
   const prefersReducedMotion = useReducedMotion()
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
@@ -78,11 +54,11 @@ export function AnimatedSection({ children, className, delay = 0 }: AnimatedSect
   return (
     <motion.div
       ref={ref}
-      className={cn('relative', className)}
-      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
+      className={className}
       variants={variants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
+      style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}
     </motion.div>
@@ -91,13 +67,7 @@ export function AnimatedSection({ children, className, delay = 0 }: AnimatedSect
 
 export function AnimatedChild({ children, className }: { children: React.ReactNode; className?: string }) {
   const prefersReducedMotion = useReducedMotion()
-  const isMobile = useIsMobile()
-
-  const variants = prefersReducedMotion
-    ? reducedChildVariants
-    : isMobile
-      ? mobileChildVariants
-      : childVariants
+  const variants = prefersReducedMotion ? reducedChildVariants : childVariants
 
   return (
     <motion.div variants={variants} className={className}>
