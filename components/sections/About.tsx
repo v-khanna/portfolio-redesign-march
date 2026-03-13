@@ -20,7 +20,7 @@ export function About() {
               UC Davis
             </a>{' '}
             with a B.S. in Computational Cognitive Science (Data &amp; AI) and a minor
-            in Philosophy focused on AI Ethics, graduating with a{' '}
+            in Philosophy focused on AI Ethics, with a{' '}
             <span className="text-lightest-slate font-medium">3.8 GPA</span>. I love
             working at the intersection of machine learning and production systems,
             building things that are both technically rigorous and genuinely useful.
