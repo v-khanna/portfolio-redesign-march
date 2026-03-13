@@ -1,0 +1,200 @@
+%-------------------------
+% Vir Khanna - Resume
+% License: MIT
+%-------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+% --- Packages ---
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+% --- Page style ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- Margins ---
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.6in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% --- Section formatting ---
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% --- ATS parsability ---
+\pdfgentounicode=1
+
+% --- Custom commands ---
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textbf{#2} \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & \textbf{#2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+
+%%%%%%  RESUME STARTS HERE  %%%%%%
+
+\begin{document}
+
+% --- Heading ---
+\begin{center}
+    \textbf{\Huge \scshape Vir Khanna} \\ \vspace{1pt}
+    \small +1(650)-515-6435 $|$ \href{mailto:virkhanna@ucdavis.edu}{\underline{vkhanna@ucdavis.edu}} $|$ 
+    \href{https://linkedin.com/in/virkhanna}{\underline{linkedin.com/in/virkhanna}} $|$
+    \href{https://github.com/v-khanna}{\underline{github.com/v-khanna}} $|$
+    \href{https://virkhanna.net}{\underline{virkhanna.net}}
+\end{center}
+
+% --- Education ---
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {University of California, Davis}{September 2025}
+      {B.S. Computational Cognitive Science (Data \& AI) --- Minor in Philosophy (AI Ethics)}{GPA: 3.79}
+    \vspace{-1pt}
+    \resumeItem{\textbf{Relevant Coursework}: Algorithms, Data Structures, Operating Systems, Machine Learning, Artificial Intelligence, Web Development, Database Management, Computer Networks, Advanced Logic, Comp. Linguistics \& CogNeuro}
+  \resumeSubHeadingListEnd
+  \vspace{-14pt}
+
+% --- Experience ---
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Blendid AI}{June 2025 -- October 2025}
+      {Technical Support Engineer Intern}{Sunnyvale, California}
+      \resumeItemListStart
+        \resumeItem{Owned end-to-end product launch of automated refund flows, slashing ticket resolution latency 72\% for 15 sites}
+        \resumeItem{Orchestrated B2B inventory alerting platform, driving cross-functional ops alignment for 99\% recipe availability}
+        \resumeItem{Defined core system health metrics and launched predictive fault features, slashing operational false alarms 20\%}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Everise}{June 2024 -- December 2024}
+      {Forward Deployed Engineer Intern}{Plantation, Florida}
+      \resumeItemListStart
+        \resumeItem{Spearheaded Generative AI voice product rollout, driving global cross-center adoption to boost resolutions 70\%}
+        \resumeItem{Championed enterprise UX overhaul by launching a self-serve IVR product, slashing hold times 70\% in 4 countries}
+        \resumeItem{Directed global infrastructure scaling for B2B enterprise clients, guaranteeing 99.9\% SLA uptime for AI products}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {CK Birla Group - Healthcare \& IVF}{June 2023 -- December 2023}
+      {Product Engineer Intern}{Gurugram, Haryana}
+      \resumeItemListStart
+        \resumeItem{Integrated Large Language Model chatbots via LangChain and Flask for internal Slack-based question answering}
+        \resumeItem{Curated PDF text datasets for iKites.ai to enable efficient company-wide automated question answering systems}
+        \resumeItem{Minimized API latency by 25\% for employee queries by optimizing Flask/Node backends and data extraction}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Machine Learning Student Network}{March 2024 -- Present}
+      {Tech Director, Founding Member}{Davis, California}
+      \resumeItemListStart
+        \resumeItem{Mentored 50 members and 6 juniors as Tech Director, scaling the UC Davis Machine Learning Student Network}
+        \resumeItem{Guided 5-person cohorts from ideation to complete deployment of ML systems with end-to-end CI/CD pipelines}
+        \resumeItem{Ran automated evaluations achieving 90\%+ accuracy for real-time ASL recognizers via MediaPipe \& MobileNetV2}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+  \vspace{-14pt}
+
+% --- Projects ---
+\section{Projects}
+\resumeSubHeadingListStart
+
+  \resumeProjectHeading
+      {\textbf{Enterprise KG-RAG w/ Multi-Agent Layer (Graphiti)} $|$ \emph{Neo4j, CrewAI, Docker, React}}{}
+      \resumeItemListStart
+        \resumeItem{Built enterprise RAG infrastructure on Neo4j, extracting and indexing financial entity datasets from PDF data}
+        \resumeItem{Designed prompt engineering pipelines across 5 CrewAI agents, enforcing evidence-only JSON output protocols}
+        \resumeItem{Deployed Graphiti on Neo4j Aura, applying context engineering with vector indexes for real-time visual graphs}
+        \resumeItem{Formalized financial domain models, building typed Neo4j edges to capture precise dates in enterprise filings}
+      \resumeItemListEnd
+      \vspace{-1pt}
+
+  \resumeProjectHeading
+      {\textbf{Bullseye -- AI Financial News Analysis Platform} $|$ \emph{OpenAI API, MySQL, Alpha Vantage, Node.js}}{}
+      \resumeItemListStart
+        \resumeItem{Synthesized real-time market analysis product pipelines, integrating GPT-4 APIs to deliver user news insights}
+        \resumeItem{Launched user-facing Chrome extension features, triggering seamless LLM analysis across 200+ financial portals}
+        \resumeItem{Constructed interactive frontend UX with React and TS, embedding SVG charts for market data comparisons}
+      \resumeItemListEnd
+      \vspace{-1pt}
+
+  \resumeProjectHeading
+      {\textbf{Echo Journal -- AI Voice Journaling iOS App} $|$ \emph{SwiftUI, FastAPI, WebSocket, PostgreSQL, OpenAI API}}{}
+      \resumeItemListStart
+        \resumeItem{Handled iOS scaling for 100+ concurrent OpenAI Realtime API connections with sub-second audio latency}
+        \resumeItem{Supervised backend product architecture via FastAPI and async PostgreSQL to power AI-driven journal synthesis}
+        \resumeItem{Prototyped iOS MVP roadmap and conducted local beta testing to validate core AI voice journaling UX workflows}
+      \resumeItemListEnd
+
+\resumeSubHeadingListEnd
+
+% --- Technical Skills ---
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Product \& Analytics}{: Agile/Scrum, A/B Testing, Product Roadmapping, Telemetry, User Experience (UX), Jira, Confluence, Figma, Tableau} \\
+     \textbf{Languages}{: Python, SQL, R, Java, C/C++, TypeScript, Rust, Golang, JavaScript, HTML/CSS, Bash, x86} \\
+     \textbf{Machine Learning \& Data Science}{: Generative AI, Large Language Models (LLMs), RAG, Prompt Engineering, NLP, Knowledge Graphs, TensorFlow, Keras, Scikit-learn, LangChain, Pandas, NumPy, OpenCV} \\
+     \textbf{Technologies}{: React, Node.js, Express, Flask, FastAPI, PostgreSQL, MySQL, Neo4j, MongoDB, Redis, AWS (S3, EC2, Lambda), GCP, Azure, GraphQL, gRPC, Spring Boot, Django, Airtable} \\
+     \textbf{Tools \& Infrastructure}{: Docker, Kubernetes, Git, GitHub Actions, Jenkins, Terraform, Maven, Postman, WebSockets, Zendesk Webhooks, DevOps}
+    }}
+ \end{itemize}
+\vspace{-10pt}
+
+\end{document}
