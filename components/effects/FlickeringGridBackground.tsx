@@ -10,7 +10,7 @@ export function FlickeringGridBackground() {
 
   return (
     <FlickeringGrid
-      className="fixed inset-0 z-0"
+      className="fixed inset-0 z-0 hidden lg:block"
       color="rgb(100, 255, 218)"
       maxOpacity={0.03}
       squareSize={5}
