@@ -9,6 +9,7 @@ import { Experience } from '@/components/sections/Experience'
 import { Projects } from '@/components/sections/Projects'
 import { Skills } from '@/components/sections/Skills'
 import { Blog } from '@/components/sections/Blog'
+import { MobileDock } from '@/components/layout/MobileDock'
 
 export default async function Page() {
   const blogPosts = await getBlogPosts()
@@ -22,7 +23,7 @@ export default async function Page() {
         <LeftPanel />
 
         {/* Right scrollable content */}
-        <main className="lg:ml-[45%] lg:max-w-[55%] px-6 py-16 lg:px-16 lg:py-24 xl:px-24">
+        <main className="lg:ml-[45%] lg:max-w-[55%] px-6 py-16 pb-24 lg:px-16 lg:py-24 lg:pb-24 xl:px-24">
           <About />
           <Experience />
           <Projects />
@@ -49,6 +50,7 @@ export default async function Page() {
           </footer>
         </main>
       </div>
+      <MobileDock />
     </ActiveSectionProvider>
   )
 }
