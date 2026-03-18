@@ -25,24 +25,39 @@ export function BlogCard({ post }: BlogCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       className="group flex flex-col rounded-lg border border-navy-lighter overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
-      whileHover={{
-        y: -3,
-        borderColor: '#233554',
-        backgroundColor: '#112240',
-        boxShadow: '0 16px 32px rgba(0,0,0,0.3)',
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      variants={{
+        rest: { y: 0 },
+        hover: {
+          y: -3,
+          borderColor: '#233554',
+          backgroundColor: '#112240',
+          boxShadow: '0 16px 32px rgba(0,0,0,0.3)',
+        },
       }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
     >
-      {/* Cover image */}
+      {/* Cover image with parallax tilt on hover */}
       {post.coverImage && (
-        <div className="relative h-36 overflow-hidden bg-navy-light">
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
-            sizes="(max-width: 640px) 100vw, 50vw"
-          />
+        <div className="relative h-36 overflow-hidden bg-navy-light" style={{ perspective: 800 }}>
+          <motion.div
+            className="relative h-full w-full"
+            variants={{
+              rest: { rotateX: 0, scale: 1 },
+              hover: { rotateX: 2, scale: 1.05 },
+            }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+          >
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, 50vw"
+            />
+          </motion.div>
         </div>
       )}
 
@@ -52,7 +67,7 @@ export function BlogCard({ post }: BlogCardProps) {
           <span className="flex-grow">{post.title}</span>
           <ArrowUpRight
             size={14}
-            className="flex-shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-teal"
+            className="flex-shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 text-teal"
           />
         </h3>
         <p className="text-xs text-slate leading-relaxed">{post.excerpt}</p>

@@ -32,7 +32,9 @@ export default async function Page() {
           {/* Footer */}
           <footer className="pt-8 pb-4 border-t border-navy-lighter">
             <p className="text-xs text-slate leading-relaxed">
-              Designed and built by Vir. Coded in Visual Studio Code and built with{' '}
+              Designed and built by Vir. The{' '}
+              <a href="https://github.com/v-khanna/portfolio-redesign-march" target="_blank" rel="noopener noreferrer" className="text-light-slate hover:text-teal transition-colors duration-200">source code</a>{' '}
+              is built with{' '}
               <a href="https://nextjs.org" target="_blank" rel="noopener noreferrer" className="text-light-slate hover:text-teal transition-colors duration-200">Next.js</a>,{' '}
               <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" className="text-light-slate hover:text-teal transition-colors duration-200">Tailwind CSS</a>, and{' '}
               <a href="https://www.framer.com/motion" target="_blank" rel="noopener noreferrer" className="text-light-slate hover:text-teal transition-colors duration-200">Framer Motion</a>.

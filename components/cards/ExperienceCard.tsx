@@ -15,26 +15,41 @@ export function ExperienceCard({ entry }: ExperienceCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       className="group relative grid grid-cols-1 sm:grid-cols-[120px_1fr] gap-2 sm:gap-6 rounded-lg p-5 cursor-pointer focus-visible:outline-none border border-transparent hover:border-teal/[0.08] transition-[border-color] duration-200"
-      whileHover={{ backgroundColor: '#112240', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' }}
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      variants={{
+        rest: { backgroundColor: 'rgba(0,0,0,0)' },
+        hover: { backgroundColor: '#112240', boxShadow: '0 4px 20px rgba(0,0,0,0.25)' },
+      }}
       transition={{ duration: 0.2 }}
       aria-label={`${entry.company} company site`}
     >
-      {/* Teal left border on hover */}
+      {/* Teal left border — grows down from top on hover via variant propagation */}
       <motion.div
-        className="absolute left-0 top-0 bottom-0 w-0.5 rounded-l-lg origin-top"
-        initial={{ scaleY: 0, backgroundColor: '#64ffda' }}
-        whileHover={{ scaleY: 1 }}
+        className="absolute left-0 top-0 bottom-0 w-0.5 rounded-l-lg origin-top bg-teal"
+        variants={{
+          rest: { scaleY: 0 },
+          hover: { scaleY: 1 },
+        }}
         transition={{ duration: 0.2 }}
       />
 
-      {/* Period */}
+      {/* Period — date illuminates teal on hover with slight delay */}
       <div className="mt-1">
-        <div className="text-xs font-mono text-slate uppercase tracking-wider whitespace-nowrap">
+        <motion.div
+          className="text-xs font-mono uppercase tracking-wider whitespace-nowrap"
+          variants={{
+            rest: { color: '#8892b0' },
+            hover: { color: 'rgba(100, 255, 218, 0.6)' },
+          }}
+          transition={{ duration: 0.2, delay: 0.08 }}
+        >
           {entry.period.split(' – ')[0]}
           <br className="hidden sm:block" />
           <span className="sm:hidden"> – </span>
           {entry.period.split(' – ')[1]}
-        </div>
+        </motion.div>
       </div>
 
       {/* Content */}

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Fira_Code } from 'next/font/google'
+import { Inter, Fira_Code, Cormorant_Garamond } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({
@@ -12,6 +12,13 @@ const firaCode = Fira_Code({
   subsets: ['latin'],
   variable: '--font-fira-code',
   display: 'swap',
+})
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+  weight: ['600', '700'],
 })
 
 export const viewport: Viewport = {
@@ -63,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${firaCode.variable}`}>
+    <html lang="en" className={`${inter.variable} ${firaCode.variable} ${cormorantGaramond.variable}`}>
       <body className="font-sans bg-navy text-lightest-slate antialiased">
         {children}
       </body>

@@ -21,6 +21,7 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
         mono: ['var(--font-fira-code)', 'Menlo', 'monospace'],
+        display: ['var(--font-display)', 'var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       transitionTimingFunction: {
         'custom-ease': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',

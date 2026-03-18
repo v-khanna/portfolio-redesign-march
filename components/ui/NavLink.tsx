@@ -22,7 +22,7 @@ export function NavLink({ href, label, isActive, onClick }: NavLinkProps) {
         <motion.span
           layoutId="nav-indicator"
           className="block h-px w-12 bg-teal"
-          transition={{ type: 'spring', stiffness: 450, damping: 38 }}
+          transition={{ type: 'spring', stiffness: 320, damping: 28, mass: 0.8 }}
         />
       ) : (
         <motion.span

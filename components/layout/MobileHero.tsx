@@ -20,33 +20,40 @@ function SubstackIcon({ size = 20 }: { size?: number }) {
   )
 }
 
-const heroVariants = {
-  hidden: { opacity: 0, y: 18 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number] },
-  },
-}
+const EASE = [0.25, 0.46, 0.45, 0.94] as [number, number, number, number]
 
 export function MobileHero() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <motion.section
-      className="lg:hidden px-6 pt-10 pb-8"
-      initial={prefersReducedMotion ? 'visible' : 'hidden'}
-      animate="visible"
-      variants={prefersReducedMotion ? undefined : heroVariants}
-    >
-      <h1 className="text-3xl font-bold text-white tracking-tight mb-3">
-        <ScrambleText text="Vir Khanna" delay={250} />
-      </h1>
-      <p className="text-sm text-slate leading-relaxed max-w-md mb-5">
-        I build systems that think, automate, and scale
-      </p>
+    <section className="lg:hidden px-6 pt-10 pb-8">
+      {/* Beat 1: Name */}
+      <motion.h1
+        className="text-3xl font-display font-bold text-white tracking-[-0.01em] mb-3"
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.55, ease: EASE }}
+      >
+        <ScrambleText text="Vir Khanna" delay={200} />
+      </motion.h1>
 
-      <div className="flex items-center gap-1">
+      {/* Beat 2: Bio (clip-path wipe reveal) */}
+      <motion.p
+        className="text-base text-light-slate leading-relaxed max-w-md mb-5"
+        initial={prefersReducedMotion ? false : { opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+        animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
+        transition={{ duration: 0.6, ease: EASE, delay: prefersReducedMotion ? 0 : 0.5 }}
+      >
+        I build systems that think, automate, and scale
+      </motion.p>
+
+      {/* Beat 3: Social links */}
+      <motion.div
+        className="flex items-center gap-1"
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut', delay: prefersReducedMotion ? 0 : 0.8 }}
+      >
         <SocialLink href="mailto:vkhanna@ucdavis.edu" icon={Mail} label="Email Vir Khanna" />
         <SocialLink href="https://github.com/v-khanna" icon={Github} label="GitHub profile" />
         <SocialLink
@@ -65,8 +72,7 @@ export function MobileHero() {
           <SubstackIcon size={18} />
         </a>
         <SocialLink href="/resume.pdf" icon={FileText} label="Open resume" />
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   )
 }
-

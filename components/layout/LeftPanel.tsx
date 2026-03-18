@@ -7,6 +7,7 @@ import { ScrambleText } from '@/components/effects/ScrambleText'
 import { SpotlightCursor } from '@/components/effects/SpotlightCursor'
 import { useActiveSectionValue } from '@/hooks/useActiveSection'
 import { useActiveSection } from '@/hooks/useActiveSection'
+import { useReducedMotion } from '@/hooks/useReducedMotion'
 import { motion } from 'framer-motion'
 
 // Substack SVG icon (not in lucide-react)
@@ -32,50 +33,48 @@ const NAV_ITEMS = [
   { href: '#blog', label: 'Blog' },
 ]
 
-const panelVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -16 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
-  },
-}
+const EASE = [0.25, 0.46, 0.45, 0.94] as [number, number, number, number]
 
 export function LeftPanel() {
   // This hook both reads and sets active section
   useActiveSection()
   const activeSection = useActiveSectionValue()
+  const prefersReducedMotion = useReducedMotion()
 
   return (
     <>
       <SpotlightCursor />
-      <aside className="hidden lg:flex lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[45%] lg:max-w-[560px] lg:flex-col lg:justify-between lg:px-16 lg:py-24 xl:px-24">
-        <motion.div
-          variants={panelVariants}
-          initial="hidden"
-          animate="visible"
-          className="flex flex-col gap-8"
-        >
-          {/* Name & bio */}
-          <motion.div variants={itemVariants}>
-            <h1 className="text-4xl font-bold text-white tracking-tight mb-4 xl:text-5xl">
-              <ScrambleText text="Vir Khanna" delay={300} />
-            </h1>
-            <p className="text-sm text-slate leading-relaxed max-w-xs">
-              I build systems that think, automate, and scale
-            </p>
-          </motion.div>
+      <aside className="hidden lg:flex lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[45%] lg:max-w-[560px] lg:flex-col lg:justify-between lg:px-16 lg:py-24 xl:px-24 left-panel-edge bg-gradient-to-b from-navy via-navy to-navy-light/30">
+        <div className="flex flex-col gap-8">
+          {/* Beat 1: Name */}
+          <div>
+            <motion.h1
+              className="text-4xl font-display font-bold text-white tracking-[-0.01em] mb-4 xl:text-[3.25rem] xl:leading-[1.1]"
+              initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+            >
+              <ScrambleText text="Vir Khanna" delay={400} />
+            </motion.h1>
 
-          {/* Navigation */}
-          <motion.nav variants={itemVariants} aria-label="Portfolio sections">
+            {/* Beat 2: Bio (clip-path wipe reveal) */}
+            <motion.p
+              className="text-base text-light-slate leading-relaxed max-w-sm"
+              initial={prefersReducedMotion ? false : { opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+              animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
+              transition={{ duration: 0.6, ease: EASE, delay: prefersReducedMotion ? 0 : 0.8 }}
+            >
+              I build systems that think, automate, and scale
+            </motion.p>
+          </div>
+
+          {/* Beat 3: Navigation */}
+          <motion.nav
+            aria-label="Portfolio sections"
+            initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut', delay: prefersReducedMotion ? 0 : 1.2 }}
+          >
             <div className="flex flex-col gap-1">
               {NAV_ITEMS.map((item) => (
                 <NavLink
@@ -87,15 +86,14 @@ export function LeftPanel() {
               ))}
             </div>
           </motion.nav>
-        </motion.div>
+        </div>
 
-        {/* Social links */}
+        {/* Beat 3b: Social links (last to appear) */}
         <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          transition={{ delay: 0.6 }}
           className="flex items-center gap-1"
+          initial={prefersReducedMotion ? false : { opacity: 0, x: -16 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: 'easeOut', delay: prefersReducedMotion ? 0 : 1.5 }}
         >
           <SocialLink
             href="mailto:vkhanna@ucdavis.edu"
