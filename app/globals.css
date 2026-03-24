@@ -79,18 +79,6 @@ code {
   color: var(--color-teal);
 }
 
-/* Left panel edge vignette */
-.left-panel-edge::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, #233554 50%, transparent);
-  pointer-events: none;
-}
-
 /* Safe-area helpers (iOS notch) */
 .pb-safe {
   padding-bottom: env(safe-area-inset-bottom);

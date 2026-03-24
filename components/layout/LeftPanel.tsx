@@ -8,7 +8,13 @@ import { SpotlightCursor } from '@/components/effects/SpotlightCursor'
 import { useActiveSectionValue } from '@/hooks/useActiveSection'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
+
+const RotatingEarth = dynamic(() => import('@/components/ui/wireframe-dotted-globe'), {
+  ssr: false,
+  loading: () => <div className="w-[300px] h-[300px]" />,
+})
 
 // Substack SVG icon (not in lucide-react)
 function SubstackIcon({ size = 20 }: { size?: number }) {
@@ -44,7 +50,7 @@ export function LeftPanel() {
   return (
     <>
       <SpotlightCursor />
-      <aside className="hidden lg:flex lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[45%] lg:max-w-[560px] lg:flex-col lg:justify-between lg:px-16 lg:py-24 xl:px-24 left-panel-edge bg-gradient-to-b from-navy via-navy to-navy-light/30">
+      <aside className="hidden lg:flex lg:fixed lg:top-0 lg:left-0 lg:h-screen lg:w-[45%] lg:max-w-[560px] lg:flex-col lg:justify-between lg:px-16 lg:py-24 xl:px-24 ">
         <div className="flex flex-col gap-8">
           {/* Beat 1: Name */}
           <div>
@@ -87,6 +93,20 @@ export function LeftPanel() {
             </div>
           </motion.nav>
         </div>
+
+        {/* Globe */}
+        <motion.div
+          className="flex-shrink-0"
+          initial={prefersReducedMotion ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: prefersReducedMotion ? 0 : 1.8 }}
+        >
+          <RotatingEarth
+            width={300}
+            height={300}
+            interactive={true}
+          />
+        </motion.div>
 
         {/* Beat 3b: Social links (last to appear) */}
         <motion.div

@@ -5,6 +5,12 @@ import { Mail, Github, Linkedin, FileText } from 'lucide-react'
 import { ScrambleText } from '@/components/effects/ScrambleText'
 import { SocialLink } from '@/components/ui/SocialLink'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import dynamic from 'next/dynamic'
+
+const RotatingEarth = dynamic(() => import('@/components/ui/wireframe-dotted-globe'), {
+  ssr: false,
+  loading: () => <div className="w-[280px] h-[280px]" />,
+})
 
 function SubstackIcon({ size = 20 }: { size?: number }) {
   return (
@@ -72,6 +78,16 @@ export function MobileHero() {
           <SubstackIcon size={18} />
         </a>
         <SocialLink href="/resume.pdf" icon={FileText} label="Open resume" />
+      </motion.div>
+
+      {/* Globe */}
+      <motion.div
+        className="flex justify-center mt-6"
+        initial={prefersReducedMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: prefersReducedMotion ? 0 : 1.2 }}
+      >
+        <RotatingEarth width={280} height={280} interactive={true} />
       </motion.div>
     </section>
   )
