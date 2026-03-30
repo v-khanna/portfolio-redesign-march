@@ -30,29 +30,39 @@ export default function RotatingEarth({
   interactive = true,
 }: RotatingEarthProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const wrapperRef = useRef<HTMLDivElement>(null)
   const [error, setError] = useState<string | null>(null)
   const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
-    if (!canvasRef.current) return
+    if (!canvasRef.current || !wrapperRef.current) return
 
     const canvas = canvasRef.current
+    const wrapper = wrapperRef.current
     const context = canvas.getContext("2d")
     if (!context) return
 
     const containerWidth = Math.min(width, window.innerWidth - 40)
     const containerHeight = Math.min(height, window.innerHeight - 100)
     const radius = Math.min(containerWidth, containerHeight) / 2.5
+    const maxZoom = 2.5
+    const canvasWidth = containerWidth * maxZoom
+    const canvasHeight = containerHeight * maxZoom
     const dpr = window.devicePixelRatio || 1
-    canvas.width = containerWidth * dpr
-    canvas.height = containerHeight * dpr
-    canvas.style.width = `${containerWidth}px`
-    canvas.style.height = `${containerHeight}px`
+    canvas.width = canvasWidth * dpr
+    canvas.height = canvasHeight * dpr
+    canvas.style.width = `${canvasWidth}px`
+    canvas.style.height = `${canvasHeight}px`
+    canvas.style.position = 'absolute'
+    canvas.style.left = `${-(canvasWidth - containerWidth) / 2}px`
+    canvas.style.top = `${-(canvasHeight - containerHeight) / 2}px`
+    wrapper.style.width = `${containerWidth}px`
+    wrapper.style.height = `${containerHeight}px`
     context.scale(dpr, dpr)
 
     const projection = geoOrthographic()
       .scale(radius)
-      .translate([containerWidth / 2, containerHeight / 2])
+      .translate([canvasWidth / 2, canvasHeight / 2])
       .clipAngle(90)
 
     const path = geoPath().projection(projection).context(context)
@@ -70,17 +80,38 @@ export default function RotatingEarth({
     let animTime = 0
 
     const render = () => {
-      context.clearRect(0, 0, containerWidth, containerHeight)
+      context.clearRect(0, 0, canvasWidth, canvasHeight)
 
-      // Ocean fill — use current projection scale so it zooms correctly
       const currentRadius = projection.scale()
+      const cx = canvasWidth / 2
+      const cy = canvasHeight / 2
+
+      // Clip everything to the globe circle
+      context.save()
       context.beginPath()
-      context.arc(containerWidth / 2, containerHeight / 2, currentRadius, 0, 2 * Math.PI)
+      context.arc(cx, cy, currentRadius, 0, 2 * Math.PI)
+      context.clip()
+
+      // Ocean fill
+      context.beginPath()
+      context.arc(cx, cy, currentRadius, 0, 2 * Math.PI)
       context.fillStyle = "#0a192f"
       context.fill()
+
+      context.restore()
+
+      // Globe border drawn outside clip so it's always a clean circle
+      context.beginPath()
+      context.arc(cx, cy, currentRadius, 0, 2 * Math.PI)
       context.strokeStyle = "rgba(100, 255, 218, 0.3)"
       context.lineWidth = 1.5
       context.stroke()
+
+      // Re-enter clip for land/graticule/pins
+      context.save()
+      context.beginPath()
+      context.arc(cx, cy, currentRadius, 0, 2 * Math.PI)
+      context.clip()
 
       if (landFeatures) {
         // Graticule
@@ -107,7 +138,7 @@ export default function RotatingEarth({
         if (!coords) return
 
         // Check if point is on visible side of globe
-        const dist = Math.hypot(coords[0] - containerWidth / 2, coords[1] - containerHeight / 2)
+        const dist = Math.hypot(coords[0] - canvasWidth / 2, coords[1] - canvasHeight / 2)
         if (dist > projection.scale() + 2) return
 
         const [px, py] = coords
@@ -132,6 +163,8 @@ export default function RotatingEarth({
         context.lineWidth = 1
         context.stroke()
       })
+
+      context.restore()
     }
 
     // Rotation state
@@ -209,9 +242,9 @@ export default function RotatingEarth({
 
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault()
-        const zoomFactor = e.deltaY > 0 ? 0.95 : 1.05
+        const zoomFactor = e.deltaY > 0 ? 0.985 : 1.015
         const currentScale = projection.scale()
-        const newScale = Math.min(radius * 3, Math.max(radius * 0.5, currentScale * zoomFactor))
+        const newScale = Math.min(radius * 2.2, Math.max(radius * 0.7, currentScale * zoomFactor))
         projection.scale(newScale)
         render()
       }
@@ -252,7 +285,9 @@ export default function RotatingEarth({
 
   return (
     <div className={`relative flex justify-center ${className}`}>
-      <canvas ref={canvasRef} />
+      <div ref={wrapperRef} className="relative overflow-hidden">
+        <canvas ref={canvasRef} />
+      </div>
     </div>
   )
 }
