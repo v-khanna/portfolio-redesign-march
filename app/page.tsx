@@ -3,6 +3,7 @@ import { ActiveSectionProvider } from '@/components/providers/ActiveSectionProvi
 import { LeftPanel } from '@/components/layout/LeftPanel'
 import { MobileHero } from '@/components/layout/MobileHero'
 import { AmbientBackground } from '@/components/effects/AmbientBackground'
+import { WaveBackground } from '@/components/effects/WaveBackground'
 import { About } from '@/components/sections/About'
 import { Experience } from '@/components/sections/Experience'
 import { Projects } from '@/components/sections/Projects'
@@ -15,6 +16,7 @@ export default async function Page() {
 
   return (
     <ActiveSectionProvider>
+      <WaveBackground />
       <AmbientBackground />
       <MobileHero />
       <div className="relative min-h-screen">

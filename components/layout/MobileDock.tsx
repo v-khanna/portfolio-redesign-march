@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { User, Briefcase, FolderOpen, Layers, PenTool } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useActiveSectionValue } from '@/hooks/useActiveSection'
@@ -14,11 +15,27 @@ const NAV_ITEMS = [
 
 export function MobileDock() {
   const activeSection = useActiveSectionValue()
+  const [visible, setVisible] = useState(true)
+  const lastScrollY = useRef(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY
+      setVisible(currentY < lastScrollY.current || currentY < 50)
+      lastScrollY.current = currentY
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <nav
       aria-label="Mobile navigation"
-      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden"
+      className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 lg:hidden transition-all duration-300"
+      style={{
+        transform: `translateX(-50%) translateY(${visible ? '0' : 'calc(100% + 2rem)'})`,
+        opacity: visible ? 1 : 0,
+      }}
     >
       <div
         className="flex items-center gap-7 px-6 py-2.5 rounded-[14px] backdrop-blur-[16px]"

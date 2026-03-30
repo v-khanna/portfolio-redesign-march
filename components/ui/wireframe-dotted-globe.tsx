@@ -60,12 +60,22 @@ export default function RotatingEarth({
 
     let landFeatures: FeatureCollection | null = null
 
+    // Pin locations: [longitude, latitude, color, label]
+    const pins: [number, number, string, string][] = [
+      [-121.74, 38.54, '#64ffda', 'Davis'],        // teal
+      [-122.42, 37.77, '#e6f1ff', 'San Francisco'], // white
+      [77.21, 28.61, '#ccd6f6', 'Delhi'],            // lightest slate
+    ]
+
+    let animTime = 0
+
     const render = () => {
       context.clearRect(0, 0, containerWidth, containerHeight)
 
-      // Ocean fill
+      // Ocean fill — use current projection scale so it zooms correctly
+      const currentRadius = projection.scale()
       context.beginPath()
-      context.arc(containerWidth / 2, containerHeight / 2, radius, 0, 2 * Math.PI)
+      context.arc(containerWidth / 2, containerHeight / 2, currentRadius, 0, 2 * Math.PI)
       context.fillStyle = "#0a192f"
       context.fill()
       context.strokeStyle = "rgba(100, 255, 218, 0.3)"
@@ -89,6 +99,39 @@ export default function RotatingEarth({
         context.lineWidth = 1
         context.stroke()
       }
+
+      // Draw pins
+      animTime += 0.02
+      pins.forEach(([lon, lat, color]) => {
+        const coords = projection([lon, lat])
+        if (!coords) return
+
+        // Check if point is on visible side of globe
+        const dist = Math.hypot(coords[0] - containerWidth / 2, coords[1] - containerHeight / 2)
+        if (dist > projection.scale() + 2) return
+
+        const [px, py] = coords
+
+        // Pin dot
+        context.beginPath()
+        context.arc(px, py, 3, 0, 2 * Math.PI)
+        context.fillStyle = color
+        context.fill()
+
+        // Pulse ring
+        const pulseRadius = 3 + ((animTime * 8) % 12)
+        const pulseAlpha = Math.max(0, 1 - pulseRadius / 15)
+        context.beginPath()
+        context.arc(px, py, pulseRadius, 0, 2 * Math.PI)
+        context.strokeStyle = color.replace(')', `, ${pulseAlpha})`).replace('rgb', 'rgba').replace('#', '')
+        // Use hex to rgba conversion
+        const r = parseInt(color.slice(1, 3), 16)
+        const g = parseInt(color.slice(3, 5), 16)
+        const b = parseInt(color.slice(5, 7), 16)
+        context.strokeStyle = `rgba(${r}, ${g}, ${b}, ${pulseAlpha})`
+        context.lineWidth = 1
+        context.stroke()
+      })
     }
 
     // Rotation state
@@ -164,12 +207,23 @@ export default function RotatingEarth({
         startDrag(e.touches[0].clientX, e.touches[0].clientY)
       }
 
+      const handleWheel = (e: WheelEvent) => {
+        e.preventDefault()
+        const zoomFactor = e.deltaY > 0 ? 0.95 : 1.05
+        const currentScale = projection.scale()
+        const newScale = Math.min(radius * 3, Math.max(radius * 0.5, currentScale * zoomFactor))
+        projection.scale(newScale)
+        render()
+      }
+
       canvas.addEventListener("mousedown", handleMouseDown)
       canvas.addEventListener("touchstart", handleTouchStart, { passive: false })
+      canvas.addEventListener("wheel", handleWheel, { passive: false })
 
       cleanupInteraction = () => {
         canvas.removeEventListener("mousedown", handleMouseDown)
         canvas.removeEventListener("touchstart", handleTouchStart)
+        canvas.removeEventListener("wheel", handleWheel)
       }
     }
 
@@ -198,7 +252,7 @@ export default function RotatingEarth({
 
   return (
     <div className={`relative flex justify-center ${className}`}>
-      <canvas ref={canvasRef} className="bg-navy" />
+      <canvas ref={canvasRef} />
     </div>
   )
 }

@@ -32,7 +32,7 @@ export function MobileHero() {
   const prefersReducedMotion = useReducedMotion()
 
   return (
-    <section className="lg:hidden px-6 pt-10 pb-8">
+    <section className="lg:hidden px-6 pt-10 pb-8 relative z-10">
       {/* Beat 1: Name */}
       <motion.h1
         className="text-3xl font-display font-bold text-white tracking-[-0.01em] mb-3"
