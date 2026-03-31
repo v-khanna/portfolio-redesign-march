@@ -72,9 +72,15 @@ export default function RotatingEarth({
 
     // Pin locations: [longitude, latitude, color, label]
     const pins: [number, number, string, string][] = [
-      [-121.74, 38.54, '#64ffda', 'Davis'],        // teal
-      [-122.42, 37.77, '#e6f1ff', 'San Francisco'], // white
-      [77.21, 28.61, '#ccd6f6', 'Delhi'],            // lightest slate
+      [-121.74, 38.54, '#64ffda', 'Davis'],           // teal
+      [-122.42, 37.77, '#e6f1ff', 'San Francisco'],   // white
+      [77.21, 28.61, '#ccd6f6', 'Delhi'],             // lightest slate
+      [-80.25, 26.12, '#a8b2d8', 'Plantation'],       // light slate
+      [77.04, 28.46, '#8892b0', 'Gurgaon'],           // slate
+      [77.59, 12.97, '#64ffda', 'Bangalore'],         // teal
+      [-74.01, 40.71, '#e6f1ff', 'New York'],         // white
+      [-118.24, 34.05, '#ccd6f6', 'Los Angeles'],     // lightest slate
+      [55.27, 25.20, '#a8b2d8', 'Dubai'],             // light slate
     ]
 
     let animTime = 0
@@ -165,11 +171,43 @@ export default function RotatingEarth({
       })
 
       context.restore()
+
+      // Hint text along top-left arc — fades on first interaction
+      if (hintOpacity > 0) {
+        const text = 'drag to spin · pinch to zoom'
+        context.font = '10px Inter, system-ui, sans-serif'
+        context.fillStyle = `rgba(136, 146, 176, ${hintOpacity * 0.5})`
+        context.textAlign = 'center'
+        context.textBaseline = 'middle'
+
+        const arcR = currentRadius + 14
+        const chars = text.split('')
+        const charWidths = chars.map(c => context.measureText(c).width)
+        const totalWidth = charWidths.reduce((a, b) => a + b, 0)
+        const totalArc = totalWidth / arcR
+
+        // -3π/4 = top-left (225° clockwise = 10:30 position)
+        let a = -Math.PI * 0.75 - totalArc / 2
+
+        for (let i = 0; i < chars.length; i++) {
+          const half = charWidths[i] / 2 / arcR
+          a += half
+          const x = cx + arcR * Math.cos(a)
+          const y = cy + arcR * Math.sin(a)
+          context.save()
+          context.translate(x, y)
+          context.rotate(a + Math.PI / 2)
+          context.fillText(chars[i], 0, 0)
+          context.restore()
+          a += half
+        }
+      }
     }
 
     // Rotation state
     const rotation = [0, 0]
     let isDragging = false
+    let hintOpacity = 1
     let isVisible = true
     let rafId: number
     let lastTime = 0
@@ -177,11 +215,26 @@ export default function RotatingEarth({
     const isMobile = containerWidth < 400
     const rotationSpeed = isMobile ? 0.7 : 1
 
+    let hintFading = false
+
+    const fadeHint = () => {
+      if (!hintFading && hintOpacity > 0) {
+        hintFading = true
+      }
+    }
+
+    // Auto-fade after 7 seconds
+    const hintTimer = setTimeout(fadeHint, 7000)
+
     const tick = (timestamp: number) => {
       rafId = requestAnimationFrame(tick)
       if (isDragging || prefersReducedMotion || !isVisible) return
       if (timestamp - lastTime < frameInterval) return
       lastTime = timestamp
+
+      if (hintFading && hintOpacity > 0) {
+        hintOpacity = Math.max(0, hintOpacity - 0.03)
+      }
 
       rotation[0] += rotationSpeed
       projection.rotate(rotation as [number, number])
@@ -203,6 +256,7 @@ export default function RotatingEarth({
     if (interactive) {
       const startDrag = (startX: number, startY: number) => {
         isDragging = true
+        fadeHint()
         const startRotation = [...rotation]
 
         const onMove = (x: number, y: number) => {
@@ -242,10 +296,21 @@ export default function RotatingEarth({
 
       const handleWheel = (e: WheelEvent) => {
         e.preventDefault()
-        const zoomFactor = e.deltaY > 0 ? 0.985 : 1.015
-        const currentScale = projection.scale()
-        const newScale = Math.min(radius * 2.2, Math.max(radius * 0.7, currentScale * zoomFactor))
-        projection.scale(newScale)
+        fadeHint()
+        if (e.ctrlKey) {
+          // Pinch-to-zoom on trackpad
+          const zoomFactor = e.deltaY > 0 ? 0.985 : 1.015
+          const currentScale = projection.scale()
+          const newScale = Math.min(radius * 2.2, Math.max(radius * 0.7, currentScale * zoomFactor))
+          projection.scale(newScale)
+        } else {
+          // Two-finger scroll → rotate
+          const sensitivity = 0.3
+          rotation[0] -= e.deltaX * sensitivity
+          rotation[1] += e.deltaY * sensitivity
+          rotation[1] = Math.max(-90, Math.min(90, rotation[1]))
+          projection.rotate(rotation as [number, number])
+        }
         render()
       }
 
@@ -267,6 +332,7 @@ export default function RotatingEarth({
 
     return () => {
       cancelAnimationFrame(rafId)
+      clearTimeout(hintTimer)
       observer.disconnect()
       cleanupInteraction?.()
     }

@@ -32,6 +32,7 @@ export default async function Page() {
 
           {/* Footer */}
           <footer className="pt-8 pb-4 border-t border-navy-lighter">
+            <p className="text-xs text-slate/60 mb-3 italic">Each pin on the globe is a link in the causal chain of my life.</p>
             <p className="text-xs text-slate leading-relaxed">
               Designed and built by Vir. The{' '}
               <a href="https://github.com/v-khanna/portfolio-redesign-march" target="_blank" rel="noopener noreferrer" className="text-light-slate hover:text-teal transition-colors duration-200">source code</a>{' '}
