@@ -68,6 +68,7 @@ export default function RotatingEarth({
     const path = geoPath().projection(projection).context(context)
     const graticuleData = geoGraticule()() // pre-compute once
 
+    const isMobile = containerWidth < 400
     let landFeatures: FeatureCollection | null = null
 
     // Pin locations: [longitude, latitude, color, label]
@@ -174,7 +175,7 @@ export default function RotatingEarth({
 
       // Hint text along top-left arc — fades on first interaction
       if (hintOpacity > 0) {
-        const text = 'drag to spin · pinch to zoom'
+        const text = isMobile ? 'drag to spin' : 'drag to spin · pinch to zoom'
         context.font = '10px Inter, system-ui, sans-serif'
         context.fillStyle = `rgba(136, 146, 176, ${hintOpacity * 0.5})`
         context.textAlign = 'center'
@@ -212,7 +213,6 @@ export default function RotatingEarth({
     let rafId: number
     let lastTime = 0
     const frameInterval = 25
-    const isMobile = containerWidth < 400
     const rotationSpeed = isMobile ? 0.7 : 1
 
     let hintFading = false
