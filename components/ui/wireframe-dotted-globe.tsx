@@ -76,12 +76,11 @@ export default function RotatingEarth({
       [-121.74, 38.54, '#64ffda', 'Davis'],           // teal
       [-122.42, 37.77, '#e6f1ff', 'San Francisco'],   // white
       [77.21, 28.61, '#ccd6f6', 'Delhi'],             // lightest slate
-      [-80.25, 26.12, '#a8b2d8', 'Plantation'],       // light slate
-      [77.04, 28.46, '#8892b0', 'Gurgaon'],           // slate
-      [77.59, 12.97, '#64ffda', 'Bangalore'],         // teal
-      [-74.01, 40.71, '#e6f1ff', 'New York'],         // white
-      [-118.24, 34.05, '#ccd6f6', 'Los Angeles'],     // lightest slate
-      [55.27, 25.20, '#a8b2d8', 'Dubai'],             // light slate
+      [-80.25, 26.12, '#57cbcc', 'Plantation'],       // muted cyan
+      [77.04, 28.46, '#a8b2d8', 'Gurgaon'],           // light slate
+      [-74.01, 40.71, '#8892b0', 'New York'],         // slate
+      [-118.24, 34.05, '#b4d0d1', 'Los Angeles'],     // dusty teal
+      [55.27, 25.20, '#d4c4a8', 'Dubai'],             // warm sand
     ]
 
     let animTime = 0
