@@ -13,7 +13,10 @@
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{verbatim}
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+\definecolor{navylink}{rgb}{0.1,0.1,0.45}
+\definecolor{linkblue}{rgb}{0.0,0.2,0.65}
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=linkblue,citecolor=black]{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
@@ -31,7 +34,7 @@
 \addtolength{\evensidemargin}{-0.5in}
 \addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-.6in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\textheight}{1.25in}
 
 \urlstyle{same}
 \raggedbottom
@@ -91,11 +94,17 @@
 % --- Heading ---
 \begin{center}
     \textbf{\Huge \scshape Vir Khanna} \\ \vspace{1pt}
-    \small +1(650)-515-6435 $|$ \href{mailto:virkhanna@ucdavis.edu}{\underline{vkhanna@ucdavis.edu}} $|$ 
-    \href{https://linkedin.com/in/virkhanna}{\underline{linkedin.com/in/virkhanna}} $|$
-    \href{https://github.com/v-khanna}{\underline{github.com/v-khanna}} $|$
-    \href{https://virkhanna.net}{\underline{virkhanna.net}}
+    \small \href{https://virkhanna.net}{\textcolor{navylink}{\underline{virkhanna.net}}} $|$ \href{mailto:virkhanna@ucdavis.edu}{\textcolor{black}{vkhanna@ucdavis.edu}} $|$ 
+    \href{https://linkedin.com/in/virkhanna}{\textcolor{black}{linkedin.com/in/virkhanna}} $|$
+    \href{https://github.com/v-khanna}{\textcolor{black}{github.com/v-khanna}} $|$
+    +1(650)-515-6435
 \end{center}
+\vspace{-17.5pt}
+
+% --- Summary ---
+\section{Summary}
+\small{Full-stack engineer with a bias for shipping. Deployed voice AI across global contact centers, built enterprise knowledge graph pipelines, and shipped production platforms from zero. Leverages AI-native tooling to prototype at startup speed.}
+\vspace{-10pt}
 
 % --- Education ---
 \section{Education}
@@ -103,17 +112,15 @@
     \resumeSubheading
       {University of California, Davis}{September 2025}
       {B.S. Computational Cognitive Science (Data \& AI) --- Minor in Philosophy (AI Ethics)}{GPA: 3.79}
-    \vspace{-1pt}
-    \resumeItem{\textbf{Relevant Coursework}: Algorithms, Data Structures, Operating Systems, Machine Learning, Artificial Intelligence, Web Development, Database Management, Computer Networks, Advanced Logic, Comp. Linguistics \& CogNeuro}
   \resumeSubHeadingListEnd
-  \vspace{-14pt}
+  \vspace{-12.5pt}
 
 % --- Experience ---
 \section{Experience}
   \resumeSubHeadingListStart
 
     \resumeSubheading
-      {Blendid AI}{June 2025 -- October 2025}
+      {Blendid AI $|$ \href{https://www.blendid.com/}{\textcolor{linkblue}{\small link}}}{June 2025 -- October 2025}
       {Technical Support Engineer Intern}{Sunnyvale, California}
       \resumeItemListStart
         \resumeItem{Owned end-to-end product launch of automated refund flows, slashing ticket resolution latency 72\% for 15 sites}
@@ -122,25 +129,25 @@
       \resumeItemListEnd
 
     \resumeSubheading
-      {Everise}{June 2024 -- December 2024}
-      {Forward Deployed Engineer Intern}{Plantation, Florida}
+      {Everise $|$ \href{https://weareeverise.com/}{\textcolor{linkblue}{\small link}}}{June 2024 -- December 2024}
+      {Software Engineer Intern, Voice AI}{Plantation, Florida}
       \resumeItemListStart
-        \resumeItem{Spearheaded Generative AI voice product rollout, driving global cross-center adoption to boost resolutions 70\%}
+        \resumeItem{Spearheaded voice AI product rollout across 4 global contact centers, boosting automated call resolutions 70\%}
         \resumeItem{Championed enterprise UX overhaul by launching a self-serve IVR product, slashing hold times 70\% in 4 countries}
         \resumeItem{Directed global infrastructure scaling for B2B enterprise clients, guaranteeing 99.9\% SLA uptime for AI products}
       \resumeItemListEnd
 
     \resumeSubheading
-      {CK Birla Group - Healthcare \& IVF}{June 2023 -- December 2023}
+      {CK Birla Group - Healthcare \& IVF $|$ \href{https://birlafertility.com/}{\textcolor{linkblue}{\small link}}}{June 2023 -- December 2023}
       {Product Engineer Intern}{Gurugram, Haryana}
       \resumeItemListStart
-        \resumeItem{Integrated Large Language Model chatbots via LangChain and Flask for internal Slack-based question answering}
+        \resumeItem{Integrated LLM-powered chatbots via LangChain and Flask for internal Slack-based question answering workflows}
         \resumeItem{Curated PDF text datasets for iKites.ai to enable efficient company-wide automated question answering systems}
-        \resumeItem{Minimized API latency by 25\% for employee queries by optimizing Flask/Node backends and data extraction}
+        \resumeItem{Minimized API latency by 25\% for employee queries by optimizing Flask and Node backends with data extraction}
       \resumeItemListEnd
 
     \resumeSubheading
-      {Machine Learning Student Network}{March 2024 -- Present}
+      {Machine Learning Student Network $|$ \href{https://www.linkedin.com/company/mlsn-davis/}{\textcolor{linkblue}{\small link}}}{March 2024 -- September 2025}
       {Tech Director, Founding Member}{Davis, California}
       \resumeItemListStart
         \resumeItem{Mentored 50 members and 6 juniors as Tech Director, scaling the UC Davis Machine Learning Student Network}
@@ -149,11 +156,19 @@
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
-  \vspace{-14pt}
+  \vspace{-16.5pt}
 
 % --- Projects ---
 \section{Projects}
 \resumeSubHeadingListStart
+
+  \resumeProjectHeading
+      {\textbf{The Modelling Directory} $|$ \emph{Django 6.0, PostgreSQL, Tailwind CSS, Cloudflare R2, Render} $|$ \href{https://themodellingdirectory.onrender.com/}{\textcolor{linkblue}{link}}}{}
+      \resumeItemListStart
+        \resumeItem{Shipped production web platform with multi-role auth, email verification, and onboarding across 11 Django apps}
+        \resumeItem{Engineered messaging system with request/accept/block workflows and agency application pipeline with snapshots}
+        \resumeItem{Hardened platform security with CSRF, rate limiting, IDOR protection, PII anonymization, and 255 test cases}
+      \resumeItemListEnd
 
   \resumeProjectHeading
       {\textbf{Enterprise KG-RAG w/ Multi-Agent Layer (Graphiti)} $|$ \emph{Neo4j, CrewAI, Docker, React}}{}
@@ -161,38 +176,35 @@
         \resumeItem{Built enterprise RAG infrastructure on Neo4j, extracting and indexing financial entity datasets from PDF data}
         \resumeItem{Designed prompt engineering pipelines across 5 CrewAI agents, enforcing evidence-only JSON output protocols}
         \resumeItem{Deployed Graphiti on Neo4j Aura, applying context engineering with vector indexes for real-time visual graphs}
-        \resumeItem{Formalized financial domain models, building typed Neo4j edges to capture precise dates in enterprise filings}
       \resumeItemListEnd
-      \vspace{-1pt}
 
   \resumeProjectHeading
-      {\textbf{Bullseye -- AI Financial News Analysis Platform} $|$ \emph{OpenAI API, MySQL, Alpha Vantage, Node.js}}{}
+      {\textbf{Bullseye -- AI Financial News Analysis Platform} $|$ \emph{OpenAI API, MySQL, Alpha Vantage, Node.js} $|$ \href{https://usebullseye.app/}{\textcolor{linkblue}{link}}}{}
       \resumeItemListStart
         \resumeItem{Synthesized real-time market analysis product pipelines, integrating GPT-4 APIs to deliver user news insights}
-        \resumeItem{Launched user-facing Chrome extension features, triggering seamless LLM analysis across 200+ financial portals}
-        \resumeItem{Constructed interactive frontend UX with React and TS, embedding SVG charts for market data comparisons}
+        \resumeItem{Launched user-facing Chrome extension and interactive React/TS frontend for LLM analysis across 200+ portals}
       \resumeItemListEnd
-      \vspace{-1pt}
+  \vspace{-1pt}
 
   \resumeProjectHeading
-      {\textbf{Echo Journal -- AI Voice Journaling iOS App} $|$ \emph{SwiftUI, FastAPI, WebSocket, PostgreSQL, OpenAI API}}{}
-      \resumeItemListStart
-        \resumeItem{Handled iOS scaling for 100+ concurrent OpenAI Realtime API connections with sub-second audio latency}
-        \resumeItem{Supervised backend product architecture via FastAPI and async PostgreSQL to power AI-driven journal synthesis}
-        \resumeItem{Prototyped iOS MVP roadmap and conducted local beta testing to validate core AI voice journaling UX workflows}
-      \resumeItemListEnd
+      {\textbf{Echo Journal} $|$ \emph{AI voice journaling iOS app --- SwiftUI, FastAPI, OpenAI Realtime API, PostgreSQL} $|$ \href{https://github.com/v-khanna/Echo-Journal}{\textcolor{linkblue}{link}}}{}
+  \vspace{-9pt}
+  \resumeProjectHeading
+      {\textbf{NoAudience} $|$ \emph{Local-first desktop media tracker --- Tauri v2, SvelteKit, SQLite, Drizzle ORM} $|$ \href{https://github.com/v-khanna/NoAudienceApps}{\textcolor{linkblue}{link}}}{}
 
 \resumeSubHeadingListEnd
 
+\vspace{-10pt}
 % --- Technical Skills ---
 \section{Technical Skills}
  \begin{itemize}[leftmargin=0.15in, label={}]
     \small{\item{
-     \textbf{Product \& Analytics}{: Agile/Scrum, A/B Testing, Product Roadmapping, Telemetry, User Experience (UX), Jira, Confluence, Figma, Tableau} \\
-     \textbf{Languages}{: Python, SQL, R, Java, C/C++, TypeScript, Rust, Golang, JavaScript, HTML/CSS, Bash, x86} \\
-     \textbf{Machine Learning \& Data Science}{: Generative AI, Large Language Models (LLMs), RAG, Prompt Engineering, NLP, Knowledge Graphs, TensorFlow, Keras, Scikit-learn, LangChain, Pandas, NumPy, OpenCV} \\
-     \textbf{Technologies}{: React, Node.js, Express, Flask, FastAPI, PostgreSQL, MySQL, Neo4j, MongoDB, Redis, AWS (S3, EC2, Lambda), GCP, Azure, GraphQL, gRPC, Spring Boot, Django, Airtable} \\
-     \textbf{Tools \& Infrastructure}{: Docker, Kubernetes, Git, GitHub Actions, Jenkins, Terraform, Maven, Postman, WebSockets, Zendesk Webhooks, DevOps}
+     \textbf{Languages}{: Python, SQL, Java, C/C++, TypeScript, Rust, Golang, JavaScript, R, HTML/CSS, Bash} \\
+     \textbf{ML \& AI}{: Generative AI, LLMs, RAG, Vector Databases, Prompt Engineering, AI Agents, NLP, Knowledge Graphs} \\
+     \textbf{Technologies}{: React, Node.js, Express, MongoDB, Redis, AWS (S3, EC2, Bedrock), GCP, Azure, GraphQL} \\
+     \textbf{Tools \& Infra}{: Git, GitHub Actions, Jenkins, Docker, Kubernetes, Terraform, CI/CD, Agile/Scrum, Jira, Confluence, Figma, Postman} \\
+     \textbf{Product}{: A/B Testing, Product Roadmapping, Telemetry, UX, PRDs, Stakeholder Management, Technical \href{https://virkhanna.substack.com/}{\textcolor{linkblue}{Writing}}} \\
+     \textbf{Coursework}{: Algorithms, Data Structures, Operating Systems, Machine Learning, AI, Databases, Computer Networks}
     }}
  \end{itemize}
 \vspace{-10pt}
