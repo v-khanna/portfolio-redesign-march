@@ -5,20 +5,19 @@ import { PostHogProvider as PHProvider } from 'posthog-js/react'
 import { useEffect } from 'react'
 import { usePathname, useSearchParams } from 'next/navigation'
 
-const POSTHOG_KEY = 'phc_xAkUMkc82fLX8qzqeRJ3xYTXvw4ei2BbBtCD5AymXNDo'
-const POSTHOG_HOST = 'https://us.i.posthog.com'
+// Module-level init — runs once on import, before any component renders
+if (typeof window !== 'undefined') {
+  posthog.init('phc_xAkUMkc82fLX8qzqeRJ3xYTXvw4ei2BbBtCD5AymXNDo', {
+    api_host: 'https://us.i.posthog.com',
+    person_profiles: 'identified_only',
+    capture_pageview: false,
+    capture_pageleave: true,
+    persistence: 'memory',
+    loaded: (ph) => { if (process.env.NODE_ENV === 'development') console.log('PostHog loaded', ph) },
+  })
+}
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    posthog.init(POSTHOG_KEY, {
-      api_host: POSTHOG_HOST,
-      person_profiles: 'identified_only',
-      capture_pageview: false, // we handle this manually
-      capture_pageleave: true,
-      persistence: 'memory', // cookieless mode — no banner needed
-    })
-  }, [])
-
   return <PHProvider client={posthog}>{children}</PHProvider>
 }
 
