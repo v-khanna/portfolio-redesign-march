@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Fira_Code, Cormorant_Garamond } from 'next/font/google'
+import { Suspense } from 'react'
+import { PostHogProvider, PostHogPageview } from '@/components/providers/PostHogProvider'
 import './globals.css'
 
 const inter = Inter({
@@ -72,7 +74,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${firaCode.variable} ${cormorantGaramond.variable}`}>
       <body className="font-sans bg-navy text-lightest-slate antialiased">
-        {children}
+        <PostHogProvider>
+          <Suspense fallback={null}>
+            <PostHogPageview />
+          </Suspense>
+          {children}
+        </PostHogProvider>
       </body>
     </html>
   )

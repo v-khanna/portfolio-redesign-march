@@ -1,5 +1,6 @@
 import { type LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { trackEvent } from '@/lib/analytics'
 
 interface SocialLinkProps {
   href: string
@@ -10,6 +11,14 @@ interface SocialLinkProps {
 }
 
 export function SocialLink({ href, icon: Icon, label, download, className }: SocialLinkProps) {
+  const handleClick = () => {
+    if (href.endsWith('.pdf')) {
+      trackEvent('resume_download')
+    } else {
+      trackEvent('social_click', { label, href })
+    }
+  }
+
   return (
     <a
       href={href}
@@ -18,6 +27,7 @@ export function SocialLink({ href, icon: Icon, label, download, className }: Soc
       download={download}
       aria-label={label}
       title={label}
+      onClick={handleClick}
       className={cn(
         'group flex items-center justify-center w-9 h-9 text-slate transition-all duration-200',
         'hover:text-teal hover:-translate-y-1 focus-visible:text-teal focus-visible:outline-none',

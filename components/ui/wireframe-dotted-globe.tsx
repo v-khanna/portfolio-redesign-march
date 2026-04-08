@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react"
 import { geoOrthographic, geoPath, geoGraticule } from "d3-geo"
 import type { FeatureCollection, Feature } from "geojson"
 import { useReducedMotion } from "@/hooks/useReducedMotion"
+import { trackEvent } from "@/lib/analytics"
 
 // Module-level cache — shared across all globe instances so only one fetch fires
 let geojsonPromise: Promise<FeatureCollection> | null = null
@@ -216,9 +217,15 @@ export default function RotatingEarth({
 
     let hintFading = false
 
+    let globeTracked = false
+
     const fadeHint = () => {
       if (!hintFading && hintOpacity > 0) {
         hintFading = true
+      }
+      if (!globeTracked) {
+        globeTracked = true
+        trackEvent('globe_interaction')
       }
     }
 

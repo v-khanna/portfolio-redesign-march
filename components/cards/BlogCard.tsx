@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import type { BlogPost } from '@/lib/types'
+import { trackEvent } from '@/lib/analytics'
 
 interface BlogCardProps {
   post: BlogPost
@@ -24,6 +25,7 @@ export function BlogCard({ post }: BlogCardProps) {
       href={post.url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('blog_click', { title: post.title, url: post.url })}
       className="group flex flex-col rounded-lg border border-navy-lighter overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal"
       initial="rest"
       whileHover="hover"
