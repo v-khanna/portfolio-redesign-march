@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://virkhanna.com'),
+  metadataBase: new URL('https://virkhanna.net'),
   title: 'Vir Khanna',
   description:
     'B.S. Computational Cognitive Science (Data & AI) from UC Davis. Building AI-powered systems and scalable web applications.',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://virkhanna.com',
+    url: 'https://virkhanna.net',
     siteName: 'Vir Khanna',
     title: 'Vir Khanna',
     description:

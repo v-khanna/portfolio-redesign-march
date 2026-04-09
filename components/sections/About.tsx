@@ -21,24 +21,32 @@ export function About() {
             </a>{' '}
             with a B.S. in Computational Cognitive Science (Data &amp; AI) and a minor
             in Philosophy focused on AI Ethics, with a{' '}
-            <span className="text-lightest-slate font-medium">3.8 GPA</span>. I love
-            working at the intersection of machine learning and production systems,
-            building things that are both technically rigorous and genuinely useful.
+            <span className="text-lightest-slate font-medium">3.8 GPA</span>. I&apos;m
+            currently building AI receptionists at{' '}
+            <a
+              href="https://getnudgeai.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lightest-slate font-medium hover:text-teal transition-colors duration-200"
+            >
+              Nudge AI
+            </a>{' '}
+            in San Francisco, working on real-time voice agents for healthcare.
           </p>
         </AnimatedChild>
         <AnimatedChild>
           <p className="text-slate leading-relaxed mb-4">
-            I&apos;ve worked across the stack, from deploying voice AI agents across
-            4 countries at{' '}
-            <span className="text-lightest-slate font-medium">Everise</span>, to building
+            Previously, I deployed voice AI agents across 4 countries at{' '}
+            <span className="text-lightest-slate font-medium">Everise</span>, built
             automated refund flows and predictive fault systems at{' '}
-            <span className="text-lightest-slate font-medium">Blendid AI</span> for their
-            autonomous food kiosks.
+            <span className="text-lightest-slate font-medium">Blendid AI</span>, and
+            integrated LLM-powered chatbots at the{' '}
+            <span className="text-lightest-slate font-medium">CK Birla Group</span>.
           </p>
         </AnimatedChild>
         <AnimatedChild>
           <p className="text-slate leading-relaxed mb-4">
-            Outside of engineering, I co-founded the{' '}
+            Outside of engineering, I founded the{' '}
             <a
               href="https://www.linkedin.com/company/mlsn-davis/posts/?feedView=all"
               target="_blank"
@@ -64,7 +72,8 @@ export function About() {
             >
               Substack
             </a>
-            .
+            .{' '}
+            <span className="text-teal/80">Currently open to full-time opportunities in AI/ML engineering.</span>
           </p>
         </AnimatedChild>
       </AnimatedSection>

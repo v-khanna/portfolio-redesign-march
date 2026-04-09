@@ -3,6 +3,21 @@ import type { ProjectEntry } from '@/lib/types'
 export const projects: ProjectEntry[] = [
   // --- Resume projects (in resume order) ---
   {
+    title: 'The Modelling Directory',
+    description:
+      'Production web platform for the modelling industry with multi-role auth, messaging, agency pipelines, and hardened security across 11 Django apps.',
+    overview:
+      'A full-stack platform where models, agencies, and clients can connect — with secure messaging, application workflows, and proper identity protection.',
+    tags: ['Django 6.0', 'PostgreSQL', 'Tailwind CSS', 'Cloudflare R2', 'Render'],
+    achievements: [
+      'Shipped production web platform with multi-role auth, email verification, and onboarding across 11 Django apps',
+      'Engineered messaging system with request/accept/block workflows and agency application pipeline with snapshots',
+      'Hardened platform security with CSRF, rate limiting, IDOR protection, PII anonymization, and 255 test cases',
+    ],
+    githubUrl: null,
+    externalUrl: 'https://themodellingdirectory.in/',
+  },
+  {
     title: 'Enterprise KG-RAG w/ Multi-Agent Layer (Graphiti)',
     description:
       'Enterprise knowledge graph RAG system for financial PDFs with structured entity extraction, graph-backed retrieval, and evidence-bound multi-agent answering.',
@@ -46,6 +61,20 @@ export const projects: ProjectEntry[] = [
       'Prototyped iOS MVP roadmap and conducted local beta testing to validate core AI voice journaling UX workflows',
     ],
     githubUrl: null,
+    externalUrl: null,
+  },
+  {
+    title: 'NoAudience',
+    description:
+      'Local-first desktop media tracker built with Tauri v2 and SvelteKit, storing everything in SQLite with Drizzle ORM — no cloud, no accounts.',
+    overview:
+      'A desktop app for tracking movies, shows, and books that keeps all your data local on your machine — no sign-ups, no cloud sync, just yours.',
+    tags: ['Tauri v2', 'SvelteKit', 'SQLite', 'Drizzle ORM'],
+    achievements: [
+      'Built local-first desktop app with Tauri v2 and SvelteKit for private media tracking with zero cloud dependencies',
+      'Designed SQLite schema with Drizzle ORM for efficient querying across media types with full offline support',
+    ],
+    githubUrl: 'https://github.com/v-khanna/NoAudienceApps',
     externalUrl: null,
   },
   // --- Notable older projects ---
