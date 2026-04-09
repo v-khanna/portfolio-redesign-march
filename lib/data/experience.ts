@@ -64,7 +64,7 @@ export const experience: ExperienceEntry[] = [
   {
     company: 'Machine Learning Student Network',
     role: 'Tech Director, Founding Member',
-    period: 'March 2024 – Present',
+    period: 'March 2024 – September 2025',
     location: 'Davis, California',
     companyUrl: 'https://www.linkedin.com/company/mlsn-davis/posts/?feedView=all',
     type: 'leadership',
