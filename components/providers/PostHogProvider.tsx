@@ -13,6 +13,13 @@ if (typeof window !== 'undefined') {
     capture_pageview: false,
     capture_pageleave: true,
     persistence: 'memory',
+    session_recording: {
+      captureCanvas: {
+        recordCanvas: true,
+        canvasFps: 4,
+        canvasQuality: '0.6',
+      },
+    },
     loaded: (ph) => { if (process.env.NODE_ENV === 'development') console.log('PostHog loaded', ph) },
   })
 }
