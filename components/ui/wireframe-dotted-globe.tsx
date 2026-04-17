@@ -269,7 +269,7 @@ export default function RotatingEarth({
           const sensitivity = 0.5
           rotation[0] = startRotation[0] + (x - startX) * sensitivity
           rotation[1] = startRotation[1] - (y - startY) * sensitivity
-          rotation[1] = Math.max(-90, Math.min(90, rotation[1]))
+          // no clamp — free rotation in any direction
           projection.rotate(rotation as [number, number])
           render()
         }
@@ -314,7 +314,7 @@ export default function RotatingEarth({
           const sensitivity = 0.3
           rotation[0] -= e.deltaX * sensitivity
           rotation[1] += e.deltaY * sensitivity
-          rotation[1] = Math.max(-90, Math.min(90, rotation[1]))
+          // no clamp — free rotation in any direction
           projection.rotate(rotation as [number, number])
         }
         render()
