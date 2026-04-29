@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://virkhanna.net/sitemap.xml',
+    sitemap: 'https://vir.codes/sitemap.xml',
   }
 }
