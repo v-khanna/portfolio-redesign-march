@@ -8,3 +8,15 @@
 [build.environment]
   NODE_VERSION = "20"
   NEXT_TELEMETRY_DISABLED = "1"
+
+[[redirects]]
+  from = "https://virkhanna.net/*"
+  to = "https://vir.codes/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.virkhanna.net/*"
+  to = "https://vir.codes/:splat"
+  status = 301
+  force = true
