@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Fira_Code, Cormorant_Garamond } from 'next/font/google'
+import { Inter, Fira_Code, Onest } from 'next/font/google'
 import { Suspense } from 'react'
 import { PostHogProvider, PostHogPageview } from '@/components/providers/PostHogProvider'
 import './globals.css'
@@ -16,7 +16,7 @@ const firaCode = Fira_Code({
   display: 'swap',
 })
 
-const cormorantGaramond = Cormorant_Garamond({
+const onest = Onest({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
@@ -72,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${firaCode.variable} ${cormorantGaramond.variable}`}>
+    <html lang="en" className={`${inter.variable} ${firaCode.variable} ${onest.variable}`}>
       <body className="font-sans bg-navy text-lightest-slate antialiased">
         <PostHogProvider>
           <Suspense fallback={null}>
